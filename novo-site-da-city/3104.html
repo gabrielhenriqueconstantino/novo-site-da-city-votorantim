@@ -73,6 +73,7 @@
             border-collapse: collapse;
             text-align: center;
             font-family: 'Poppins';
+            
         }
 
         table th,
@@ -81,6 +82,7 @@
             border: 1px solid #000000;
             font-size: 16px;
             color: #333;
+            
         }
 
         table th {
@@ -138,6 +140,8 @@
 
 /* Ajustes para dispositivos móveis */
 @media (max-width: 600px) {
+
+    
     .info-container {
         justify-content: center;
         margin: 8px 20px;
@@ -152,7 +156,34 @@
     .info-item p {
         font-size: 12px; /* Reduz o tamanho da fonte em dispositivos móveis */
     }
+
+    /* Correções nos botões */
+    .dia-container,
+    .partida-container {
+        display: flex;
+        justify-content: center;
+        margin: 8px 20px;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .btn-dia,
+    .btn-partida {
+        background-color: transparent;
+        color: rgb(0, 0, 0);
+        border: 2px solid #004aad;
+        padding: 6px 12px; /* Ajuste para telas pequenas */
+        font-size: 14px; /* Fonte menor */
+        font-weight: bold;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: background 0.3s ease, color 0.3s ease;
+        width: 120px; /* Definir largura fixa para melhor encaixe */
+        text-align: center;
+        font-family: 'Poppins', sans-serif;
+    }
 }
+
     </style>
 </head>
 <body>
@@ -207,8 +238,8 @@
 
           
             <div class="partida-container">
-                <button class="btn-partida" id="btn-centro">Centro</button>
                 <button class="btn-partida" id="btn-bairro">Bairro</button>
+                <button class="btn-partida" id="btn-centro">Centro</button>
             </div>
 
             <div class="info-container">
