@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empresa de Ônibus</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+    <!-- Adicionando o Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Estilos existentes */
+        .dia-container,
+        .partida-container {
+            display: flex;
+            justify-content: flex-start;
+            margin: 8px 40px;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .btn-dia,
+        .btn-partida {
+            background-color: transparent;
+            color: rgb(0, 0, 0);
+            border: 2px solid #004aad;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background 0.3s ease, color 0.3s ease;
+            flex: 1 1 auto;
+            max-width: 200px;
+        }
+
+        .btn-partida {
+            margin-top: 5px;
+        }
+
+        .btn-dia:hover,
+        .btn-partida:hover {
+            background-color: #003580;
+            color: white;
+        }
+
+        .btn-dia.selecionado,
+        .btn-partida.selecionado {
+            background-color: #003580;
+            color: white;
+            border-color: #003580;
+        }
+
+        .tabela {
+            margin-top: 20px;
+            margin-bottom: 40px;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: #f4f4f4;
+        }
+
+        .tabela h3 {
+            font-size: 24px;
+            font-weight: bold;
+            color: #004AAD;
+            text-align: center;
+            margin-bottom: 15px;
+            font-family: 'Poppins';
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+            font-family: 'Poppins';
+        }
+
+        table th,
+        table td {
+            padding: 12px 15px;
+            border: 1px solid #000000;
+            font-size: 16px;
+            color: #333;
+        }
+
+        table th {
+            background-color: #004AAD;
+            color: white;
+            font-weight: bold;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #e9e9e9;
+        }
+
+        /* Estilos para o container de informações */
+.info-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin: 8px 40px;
+    gap: 10px;
+    margin-right: 155px;
+    margin-top: -120px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.info-box {
+    background-color: #f4f4f4;
+    border: 1px solid #004AAD;
+    border-radius: 8px;
+    padding: 15px;
+    width: 350px; /* Largura fixa */
+    text-align: left;
+    word-wrap: break-word; /* Quebra o texto se necessário */
+    overflow-wrap: break-word; /* Garante que o texto quebre corretamente */
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.info-item i {
+    font-size: 18px;
+    color: #004AAD;
+    margin-right: 10px;
+    flex-shrink: 0; /* Impede que o ícone diminua */
+}
+
+.info-item p {
+    margin: 0;
+    font-size: 14px;
+    color: #333;
+    line-height: 1.5; /* Espaçamento entre linhas */
+}
+
+/* Ajustes para dispositivos móveis */
+@media (max-width: 600px) {
+    .info-container {
+        justify-content: center;
+        margin: 8px 20px;
+        margin-top: 10px;
+    }
+
+    .info-box {
+        width: 100%; /* Ocupa a largura total em dispositivos móveis */
+        max-width: 100%; /* Garante que não ultrapasse a largura da tela */
+    }
+
+    .info-item p {
+        font-size: 12px; /* Reduz o tamanho da fonte em dispositivos móveis */
+    }
+}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="https://citymais.com.br/wp-content/uploads/2024/11/logo-city.png" alt="Logo da CITY+">
+        </div>
+        <nav>
+            <div class="menu-toggle" id="menu-toggle">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+            <ul class="menu" id="menu">
+                <li><a href="#horarios">Horários</a></li>
+                <li><a href="#itinerarios">Itinerários</a></li>
+                <li><a href="#contato">Contato</a></li>
+                <li><a href="#cadastro">Cadastro</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="banner">
+            <h1>Bem-vindo à CITY+ Votorantim</h1>
+            <p>Consulte horários e informações das linhas municipais.</p>
+        </section>
+        
+        <section id="horarios" class="horarios">
+            <h2>Horários das Linhas</h2>
+
+            <div class="search-container">
+                <input type="text" id="search" class="search-bar" placeholder="Pesquisar por número ou nome...">
+                <button class="search-button">
+                    <img src="https://img.icons8.com/ios-filled/50/000000/search.png" alt="Ícone de lupa">
+                </button>
+            </div>
+
+            <div class="linha-container">
+                <a href="index.html" class="linha home-button" title="Página Inicial">🏠</a>
+                <a href="3102.html" class="linha">Horário 3102 - Itapeva Direto</a>
+            </div>
+            
+        </section>
+        
+        <section id="selecionar-horario" class="selecionar-horario">
+            <div class="dia-container">
+                <button class="btn-dia" id="btn-uteis">Dias Úteis</button>
+                <button class="btn-dia" id="btn-sabados">Sábados</button>
+                <button class="btn-dia" id="btn-domingos-feriados">Domingos e feriados</button>
+            </div>
+
+          
+            <div class="partida-container">
+                <button class="btn-partida" id="btn-centro">Centro</button>
+                <button class="btn-partida" id="btn-bairro">Bairro</button>
+            </div>
+
+            <div class="info-container">
+                <div class="info-box">
+                    
+                    <div class="info-item">
+                        <i class="fas fa-clock"></i>
+                        <p id="dia-horario">Carregando...</p>
+                    </div>
+
+                    <div class="info-item">
+                        <i class="fas fa-arrows-alt-h"></i>
+                        <p>Linha Municipal 3102 - Itapeva Direto</p>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p id="localizacao">Escolha a partida (Centro/Bairro)</p>
+                    </div>
+
+                    <div class="info-item">
+                        <i class="fas fa-calendar-alt"></i>
+                        <p>Vigência: 14/09/2024</p>
+                    </div>
+
+                </div>
+            </div>
+            
+
+            <!-- Tabela de Horários -->
+<div id="horarios-tabela" class="horarios-tabela">
+    <!-- Tabela de Dias Úteis para Bairro -->
+    <div class="tabela" id="uteis-bairro">
+        <h3>Dias Úteis - Bairro</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Partindo de</th>
+                    <th>Horário</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td rowspan="10">Bairro</td>
+                    <td>04:05 (Atende Jd. Europa, Pq. São João e Votocel)</td>
+                </tr>
+                <tr>
+                    <td>05:10 (Atende Votocel)</td>
+                </tr>
+                <tr>
+                    <td>06:05</td>
+                </tr>
+                <tr>
+                    <td>06:20 (Atende Jd. Europa)</td>
+                </tr>
+                <tr>
+                    <td>07:30 (Atende Jd. Europa)</td>
+                </tr>
+                <tr>
+                    <td>08:30</td>
+                </tr>
+                <tr>
+                    <td>16:20 (R. ANÁLIA PEREIRA ATÉ ROD. RAIMUNDO ANTUNES SOARES)</td>
+                </tr>
+                <tr>
+                    <td>18:10</td>
+                </tr>
+                <tr>
+                    <td>18:40 (Atende Votocel)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <!-- Tabela de Dias Úteis para Centro -->
+    <div class="tabela" id="uteis-centro">
+        <h3>Dias Úteis - Centro</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Partindo de</th>
+                    <th>Horário</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td rowspan="11">Centro</td>
+                    <td>04:40</td>
+                </tr>
+                <tr>
+                    <td>05:45</td>
+                </tr>
+                <tr>
+                    <td>06:40</td>
+                </tr>
+                <tr>
+                    <td>06:55</td>
+                </tr>
+                <tr>
+                    <td>07:55</td>
+                </tr>
+                <tr>
+                    <td>15:45</td>
+                </tr>
+                <tr>
+                    <td>16:55</td>
+                </tr>
+                <tr>
+                    <td>17:35</td>
+                </tr>
+                <tr>
+                    <td>18:05 (Atende Votocel e Jd. Europa)</td>
+                </tr>
+                <tr>
+                    <td>18:45</td>
+                </tr>
+                <tr>
+                    <td>19:15</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <!-- Tabela de Sábados para Bairro -->
+    <div class="tabela" id="sabados-bairro">
+        <h3>Sábados - Bairro</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Partindo de</th>
+                    <th>Horário</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td rowspan="13">Bairro</td>
+                    <td>04:05 (Atende Jd. Europa, Pq. São João e Votocel)</td>
+                </tr>
+                <tr>
+                    <td>05:10</td>
+                </tr>
+                <tr>
+                    <td>06:20</td>
+                </tr>
+                <tr>
+                    <td>07:30</td>
+                </tr>
+                <tr>
+                    <td>09:00</td>
+                </tr>
+                <tr>
+                    <td>10:10</td>
+                </tr>
+                <tr>
+                    <td>11:20</td>
+                </tr>
+                <tr>
+                    <td>12:30</td>
+                </tr>
+                <tr>
+                    <td>13:40</td>
+                </tr>
+                <tr>
+                    <td>15:10</td>
+                </tr>
+                <tr>
+                    <td>16:20</td>
+                </tr>
+                <tr>
+                    <td>17:30</td>
+                </tr>
+                <tr>
+                    <td>18:40</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Tabela de Sábados para Centro -->
+    <div class="tabela" id="sabados-centro">
+        <h3>Sábados - Centro</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Partindo de</th>
+                    <th>Horário</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td rowspan="13">Centro</td>
+                    <td>04:40</td>
+                </tr>
+                <tr>
+                    <td>05:45</td>
+                </tr>
+                <tr>
+                    <td>06:55</td>
+                </tr>
+                <tr>
+                    <td>08:05</td>
+                </tr>
+                <tr>
+                    <td>09:35</td>
+                </tr>
+                <tr>
+                    <td>10:45</td>
+                </tr>
+                <tr>
+                    <td>11:55</td>
+                </tr>
+                <tr>
+                    <td>13:05</td>
+                </tr>
+                <tr>
+                    <td>14:15</td>
+                </tr>
+                <tr>
+                    <td>15:45</td>
+                </tr>
+                <tr>
+                    <td>16:55</td>
+                </tr>
+                <tr>
+                    <td>18:05</td>
+                </tr>
+                <tr>
+                    <td>19:15</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Tabela de Domingos e Feriados -->
+    <div class="tabela" id="domingos-tabela">
+        <h3>Domingos e Feriados - Bairro</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Partindo de</th>
+                    <th>Horário</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td rowspan="2">Bairro</td>
+                    <td>04:05 (Atende Jd. Europa, Pq. São João e Votocel)</td>
+                </tr>
+                <tr>
+                    <td>07:10</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="tabela" id="domingos-centro">
+        <h3>Domingos e Feriados - Centro</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Partindo de</th>
+                    <th>Horário</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td rowspan="1">Centro</td>
+                    <td>10:30</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+                
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 CITY+ - Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+    // Botões de filtro de partida
+    const btnCentro = document.getElementById("btn-centro");
+    const btnBairro = document.getElementById("btn-bairro");
+
+    // Elemento para exibir a localização
+    const localizacaoElemento = document.getElementById("localizacao");
+
+    // Atualiza o texto da localização com base no botão selecionado
+    btnCentro.addEventListener("click", function () {
+        localizacaoElemento.textContent = "Terminal Urbano João Souto";
+    });
+
+    btnBairro.addEventListener("click", function () {
+        localizacaoElemento.textContent = "Rua Lourenço Mouro";
+    });
+});
+
+    </script>
+    
+    <script src="script.js"></script>
+</body>
+</html>

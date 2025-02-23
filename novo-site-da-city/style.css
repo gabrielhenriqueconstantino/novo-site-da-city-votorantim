@@ -1,0 +1,275 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    overflow-x: hidden;
+}
+
+.logo img {
+    max-width: 150px;
+    height: auto;
+}
+
+header {
+    background-color: #333333; /* Cinza escuro */
+    padding: 15px;
+    text-align: center;
+    color: white;
+    display: flex; /* Flexbox para controle de layout */
+    justify-content: space-between; /* Espaço entre logo e menu */
+    align-items: center;
+}
+
+.menu {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+    display: flex; /* Para alinhamento horizontal dos itens */
+}
+
+.menu li {
+    margin: 0 15px;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.menu a:hover {
+    background-color: #004AAD; /* Cor de destaque ao passar o mouse */
+    transform: scale(1.1);
+    padding: 10px 20px;
+    border-radius: 14px;
+}
+
+.menu-toggle {
+    display: none; /* Esconde por padrão */
+    flex-direction: column;
+    cursor: pointer;
+    padding: 10px;
+    margin-right: 20px;
+    transition: transform 0.3s ease; /* Suaviza a rotação */
+}
+
+.menu-toggle .line {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 4px 0;
+    transition: transform 0.3s ease, opacity 0.3s ease; /* Suaviza a rotação das linhas */
+}
+
+/* Efeito de rotação do menu hamburguer quando ativo */
+.menu-toggle.active {
+    transform: rotate(90deg); /* Rotação suave */
+}
+
+/* Transformação das linhas do menu hambúrguer */
+.menu-toggle.active .line:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.menu-toggle.active .line:nth-child(2) {
+    opacity: 0; /* Some a linha do meio */
+}
+
+.menu-toggle.active .line:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Exibe o menu hambúrguer apenas em telas pequenas */
+@media (max-width: 768px) {
+
+    html, body {
+        overflow-x: hidden;  /* Remove a rolagem horizontal */
+        width: auto;  /* Garante que o conteúdo ocupe toda a largura */
+        margin: 0;
+        
+    }
+
+    .menu {
+        overflow-x: hidden;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        width: auto;
+        background-color: rgba(255, 255, 255, 0.9);
+        position: absolute;
+        top: 67px;
+        width: 90%;
+        left: 0;
+        padding: 20px;
+        z-index: 999;
+        transition: transform 0.3s ease-out, opacity 0.3s ease-out; /* Suaviza a transição */
+        transform: translateY(-20px); /* Começa deslocado para cima */
+        opacity: 0; /* Inicialmente invisível */
+        visibility: hidden; /* Evita clique antes da exibição */
+    }
+
+    .menu.show {
+        transform: translateY(0); /* Desce suavemente */
+        opacity: 1; /* Torna visível */
+        visibility: visible;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    @keyframes dropMenu {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+
+    .menu li {
+        margin: 15px 0; /* Espaçamento entre os itens do menu */
+    }
+
+    .menu a {
+        font-family: 'Poppins', sans-serif; /* Fonte Poppins */
+        font-weight: bold; /* Negrito */
+        color: #004AAD; /* Cor azul */
+        font-size: 20px; /* Ajuste do tamanho da fonte */
+        text-decoration: none;
+        padding: 10px 20px;
+        transition: all 0.3s ease; /* Transição suave para todos os efeitos */
+     /* Faz os links ocupar a linha inteira */
+        text-align: center; /* Centraliza o texto */
+    }
+
+    .menu a:hover {
+        background-color: #333333; /* Cor de fundo ao passar o mouse (cinza escuro) */
+        color: white; /* Muda a cor do texto para branco */
+        border-radius: 14px; /* Arredonda os cantos */
+        transform: scale(1.05); /* Leve aumento de tamanho para o hover */
+    }
+}
+
+
+.banner {
+    background-color: #FFCC00;
+    padding: 50px;
+    text-align: center;
+    font-family: 'Poppins', sans-serif; /* Fonte Poppins */
+    font-weight: bold; /* Negrito */
+
+}
+
+.horarios {
+    text-align: center;
+    padding: 20px;
+    font-family: 'Poppins';
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0; /* Espaço entre o título e a barra de pesquisa */
+}
+
+.search-bar {
+    width: 100%;
+    max-width: 100%; /* Limite de largura da barra de pesquisa */
+    padding: 10px;
+    font-size: 15px;
+    border-radius: 20px; /* Bordas arredondadas */
+    border: 1px solid #333; /* Cor da borda */
+    outline: none; /* Remove a borda padrão do foco */
+    padding-left: 50px; /* Aumentado para criar mais espaço entre o texto e a lupa */
+    font-style: italic;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: #333;
+}
+
+.search-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    padding: 10px;
+    padding-top: 13px;
+    left: 20px;
+}
+
+.search-bar:focus {
+    border-color: #004AAD; /* Cor de destaque ao focar no campo de pesquisa */
+}
+
+.search-button img {
+    width: 20px;
+    height: 20px;
+}
+
+.linha-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 10px;
+    justify-content: center;
+    padding: 20px;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.7s ease-in-out;
+}
+
+.linha {
+    background-color: #004AAD;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    text-align: center;
+    transition: all 0.3s ease;
+    opacity: 1; /* Linhas com opacidade normal por padrão */
+    transform: scale(1); /* Linhas com tamanho normal por padrão */
+    position: relative; /* Necessário para o pseudo-elemento */
+}
+
+/* Aplicando a camada preta "em segundo plano" */
+.linha.darker::after {
+    content: ''; /* Necessário para criar o pseudo-elemento */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7); /* Camada preta com opacidade */
+    border-radius: 8px; /* Mantém o mesmo arredondamento das bordas */
+    z-index: -1; /* Coloca o pseudo-elemento atrás do conteúdo da linha */
+}
+
+.linha.darker {
+    transform: scale(0.9); /* Diminui o tamanho das linhas não selecionadas */
+}
+
+/* Estilo da linha em foco (hover) */
+.linha:hover {
+    transform: scale(1.1); /* Expande a linha em destaque */
+    opacity: 1; /* Garante que a linha em foco tenha opacidade completa */
+    z-index: 1; /* Coloca a linha em foco acima das outras */
+}
+
+footer {
+    background-color: #004AAD;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin-top: 20px;
+}
