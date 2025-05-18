@@ -48,7 +48,7 @@
 
 .nav-links li a:hover,
 .nav-links li a.active {
-  color: rgb(245, 210, 10); /* amarelo destaque */
+  color: #FFCC00; /* amarelo destaque */
 }
 
 
@@ -90,7 +90,7 @@
 @media (max-width: 768px) {
   .nav-links {
     flex-direction: column;
-    background-color: rgba(255, 255, 255, 0.973);
+    background-color: rgba(255, 0, 0, 0.973);
     position: absolute;
     top: 78px;
     right: 0;
@@ -120,7 +120,7 @@
   }
 
   .nav-links li a {
-  color: #0d5aff;
+  color: #333;
   font-weight: 700;
   font-size: 1.2rem;
   padding: 0.5rem 0;

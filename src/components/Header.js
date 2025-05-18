@@ -28,25 +28,25 @@ const Header = () => {
           <li>
             <NavLink to="/" end onClick={() => setMenuOpen(false)}
               className={({ isActive }) => (isActive ? 'active' : '')}>
-              Horários
+              HORÁRIOS
             </NavLink>
           </li>
           <li>
             <NavLink to="/projects" onClick={() => setMenuOpen(false)}
               className={({ isActive }) => (isActive ? 'active' : '')}>
-              Intinerários
+              ITINERÁRIOS
             </NavLink>
           </li>
           <li>
             <NavLink to="/blog" onClick={() => setMenuOpen(false)}
               className={({ isActive }) => (isActive ? 'active' : '')}>
-              Contato
+              CADASTRO
             </NavLink>
           </li>
           <li>
             <NavLink to="/contact" onClick={() => setMenuOpen(false)}
               className={({ isActive }) => (isActive ? 'active' : '')}>
-              Cadastro
+              FALE CONOSCO
             </NavLink>
           </li>
         </ul>
