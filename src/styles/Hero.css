@@ -1,0 +1,96 @@
+.horarios {
+    text-align: center;
+    padding: 20px;
+    font-family: 'Poppins';
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0; /* Espaço entre o título e a barra de pesquisa */
+}
+
+.search-bar {
+    width: 100%;
+    max-width: 100%; /* Limite de largura da barra de pesquisa */
+    padding: 10px;
+    font-size: 15px;
+    border-radius: 20px; /* Bordas arredondadas */
+    border: 1px solid #333; /* Cor da borda */
+    outline: none; /* Remove a borda padrão do foco */
+    padding-left: 50px; /* Aumentado para criar mais espaço entre o texto e a lupa */
+    font-style: italic;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: #333;
+}
+
+.search-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    padding: 10px;
+    padding-top: 13px;
+    left: 20px;
+}
+
+.search-bar:focus {
+    border-color: #004AAD; /* Cor de destaque ao focar no campo de pesquisa */
+}
+
+.search-button img {
+    width: 20px;
+    height: 20px;
+}
+
+.linha-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 10px;
+    justify-content: center;
+    padding: 20px;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.7s ease-in-out;
+}
+
+.linha {
+    background-color: #004AAD;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    text-align: center;
+    transition: all 0.3s ease;
+    opacity: 1; /* Linhas com opacidade normal por padrão */
+    transform: scale(1); /* Linhas com tamanho normal por padrão */
+    position: relative; /* Necessário para o pseudo-elemento */
+}
+
+/* Aplicando a camada preta "em segundo plano" */
+.linha.darker::after {
+    content: ''; /* Necessário para criar o pseudo-elemento */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7); /* Camada preta com opacidade */
+    border-radius: 8px; /* Mantém o mesmo arredondamento das bordas */
+    z-index: -1; /* Coloca o pseudo-elemento atrás do conteúdo da linha */
+}
+
+.linha.darker {
+    transform: scale(0.9); /* Diminui o tamanho das linhas não selecionadas */
+}
+
+/* Estilo da linha em foco (hover) */
+.linha:hover {
+    transform: scale(1.1); /* Expande a linha em destaque */
+    opacity: 1; /* Garante que a linha em foco tenha opacidade completa */
+    z-index: 1; /* Coloca a linha em foco acima das outras */
+}
