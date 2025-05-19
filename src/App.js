@@ -1,17 +1,22 @@
-import './styles/global.css';
-import './styles/App.css';
+import './main/styles/global.css';
+import './main/styles/App.css';
+import { Routes, Route } from 'react-router-dom';
 
-import Header from './components/Header';
-import Banner from './components/Banner';
-import Hero from './components/Hero';
-import Footer from './components/Footer';
+import Header from './main/components/Header';
+import Banner from './main/components/Banner';
+import Hero from './main/components/Hero';
+import Footer from './main/components/Footer';
+import LinhaDetalhes from './linhas/LinhaDetalhes';
 
 function App() {
   return (
     <div className="App">
       <Header />
       <Banner />
-      <Hero />
+      <Routes>
+        <Route path="/" element={<Hero />} />
+        <Route path="/:id" element={<LinhaDetalhes />} />
+      </Routes>
       <Footer />
     </div>
   );
