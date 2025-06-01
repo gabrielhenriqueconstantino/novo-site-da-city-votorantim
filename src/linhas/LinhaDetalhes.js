@@ -97,7 +97,7 @@ const LinhaDetalhes = () => {
             <a href="/" className="linha-button" title="Baixar em PDF"><FaFilePdf /></a>
             <a href="/" className="linha-button" title="Itinerário"><FaBus /></a>
           </div>
-          <a className="linha-selected">Horário {id} - {linha.nome}</a>
+          <p className="linha-selected">Horário {id} - {linha.nome}</p>
         </div>
       </section>
 
