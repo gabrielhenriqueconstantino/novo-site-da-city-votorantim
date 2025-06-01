@@ -51,7 +51,7 @@
     justify-content: center;
     padding: 20px;
     font-family: 'Poppins', sans-serif;
-    transition: all 0.7s ease-in-out;
+    font-weight: 600;
 }
 
 .linha {
@@ -66,31 +66,37 @@
     font-size: 16px;
     text-align: center;
     transition: all 0.3s ease;
-    opacity: 1; /* Linhas com opacidade normal por padrão */
-    transform: scale(1); /* Linhas com tamanho normal por padrão */
-    position: relative; /* Necessário para o pseudo-elemento */
+    transform: scale(0.9);
+    position: relative;
+    z-index: 1;
 }
 
-/* Aplicando a camada preta "em segundo plano" */
-.linha.darker::after {
-    content: ''; /* Necessário para criar o pseudo-elemento */
+/* Camada de escurecimento - sempre presente mas transparente */
+.linha::after {
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.7); /* Camada preta com opacidade */
-    border-radius: 8px; /* Mantém o mesmo arredondamento das bordas */
-    z-index: -1; /* Coloca o pseudo-elemento atrás do conteúdo da linha */
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 8px;
+    z-index: -1;
+    transition: background-color 0.4s ease;
 }
 
-.linha.darker {
-    transform: scale(0.9); /* Diminui o tamanho das linhas não selecionadas */
+/* Estado quando não está em hover (darker) */
+.linha-container:not(:hover) .linha,
+.linha-container:hover .linha:not(:hover) {
+    transform: scale(0.9);
 }
 
-/* Estilo da linha em foco (hover) */
+.linha-container:hover .linha:not(:hover)::after {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* Estado de hover */
 .linha:hover {
-    transform: scale(1.1); /* Expande a linha em destaque */
-    opacity: 1; /* Garante que a linha em foco tenha opacidade completa */
-    z-index: 1; /* Coloca a linha em foco acima das outras */
+    transform: scale(1.05) !important;
+    z-index: 2;
 }

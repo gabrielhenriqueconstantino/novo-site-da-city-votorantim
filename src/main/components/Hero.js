@@ -1,18 +1,17 @@
-import React, { useState } from 'react'; // Adicionei o useState aqui
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/Hero.css';
 import horariosData from '../../data/horarios.json';
 
 const Linhas = () => {
   const [termoBusca, setTermoBusca] = useState('');
+  const [hoveredLinha, setHoveredLinha] = useState(null);
   
-  // Converter o objeto de linhas em array e adicionar o ID
   const todasLinhas = Object.entries(horariosData.linhas).map(([id, data]) => ({
     id,
     nome: data.nome
   }));
 
-  // Filtrar as linhas baseado no termo de busca
   const linhasFiltradas = todasLinhas.filter(linha => {
     const busca = termoBusca.toLowerCase();
     return (
@@ -52,7 +51,11 @@ const Linhas = () => {
             <Link
               key={linha.id}
               to={`/${linha.id}`}
-              className="linha"
+              className={`linha ${hoveredLinha && hoveredLinha !== linha.id ? 'darker' : ''}`}
+              onMouseEnter={() => setHoveredLinha(linha.id)}
+              onMouseLeave={() => setHoveredLinha(null)}
+              // Adiciona um pequeno delay para evitar piscadas
+              onMouseOver={() => setHoveredLinha(linha.id)}
             >
               Horário {linha.id} - {linha.nome}
             </Link>
