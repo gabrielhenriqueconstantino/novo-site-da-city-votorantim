@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { FaClock, FaArrowsAltH, FaMapMarkerAlt, FaCalendarAlt, FaHome, FaFilePdf, FaBus } from 'react-icons/fa';
+import { FaClock, FaArrowsAltH, FaMapMarkerAlt, FaCalendarAlt, FaHome, FaFilePdf, FaBus, FaArrowDown, FaArrowUp } from 'react-icons/fa';
 import horariosData from '../data/horarios.json';
 import './LinhaDetalhes.css';
 
@@ -8,12 +8,24 @@ const LinhaDetalhes = () => {
   const { id } = useParams();
   const [loading, setLoading] = useState(true);
   const [linha, setLinha] = useState(null);
-  const [diaSelecionado, setDiaSelecionado] = useState('dias_uteis');
+  const [diaSelecionado, setDiaSelecionado] = useState('dias_uteis'); // Valor padrão
   const [partidaSelecionada, setPartidaSelecionada] = useState(null);
   const [pontosPartida, setPontosPartida] = useState([]);
   const [dataHoraAtual, setDataHoraAtual] = useState(new Date());
 
   useEffect(() => {
+    // Determinar o dia da semana atual (0 = Domingo, 1 = Segunda, ..., 6 = Sábado)
+    const diaSemana = new Date().getDay();
+    
+    // Definir o dia selecionado com base no dia atual
+    if (diaSemana >= 1 && diaSemana <= 5) { // Segunda a sexta
+      setDiaSelecionado('dias_uteis');
+    } else if (diaSemana === 6) { // Sábado
+      setDiaSelecionado('sabados');
+    } else { // Domingo (0) ou outros (por segurança)
+      setDiaSelecionado('domingos_feriados');
+    }
+
     const intervalo = setInterval(() => {
       setDataHoraAtual(new Date());
     }, 1000);
@@ -58,6 +70,25 @@ const LinhaDetalhes = () => {
     }
   };
 
+  const [mostrarTabela, setMostrarTabela] = useState(false);
+
+  const scrollTo = (id) => {
+  const element = document.getElementById(id);
+  element.scrollIntoView({
+    behavior: 'smooth',
+    block: 'start'
+  });
+};
+
+const toggleNavegacao = () => {
+  if (mostrarTabela) {
+    scrollTo('horarios');
+  } else {
+    scrollTo('horarios-tabela');
+  }
+  setMostrarTabela(!mostrarTabela);
+};
+
   const getLocalPartida = () => {
     if (!linha || !linha.local_partida || !partidaSelecionada) return 'Local não especificado';
     return linha.local_partida[partidaSelecionada] || 'Local não especificado';
@@ -97,7 +128,7 @@ const LinhaDetalhes = () => {
             <a href="/" className="linha-button" title="Baixar em PDF"><FaFilePdf /></a>
             <a href="/" className="linha-button" title="Itinerário"><FaBus /></a>
           </div>
-          <p className="linha-selected">Horário {id} - {linha.nome}</p>
+          <button className="linha-selected">Horário {id} - {linha.nome}</button>
         </div>
       </section>
 
@@ -110,13 +141,13 @@ const LinhaDetalhes = () => {
 
         <div className="partida-container">
           {pontosPartida.map((ponto) => (
-            <button
-              key={ponto}
-              className={`btn-partida ${partidaSelecionada === ponto ? 'active' : ''}`}
-              onClick={() => handlePartidaClick(ponto)}
+          <button
+            key={ponto}
+            className={`btn-partida ${partidaSelecionada === ponto ? 'active' : ''}`}
+            onClick={() => handlePartidaClick(ponto)}
             >
-              {ponto}
-            </button>
+            {ponto}
+          </button>
           ))}
         </div>
 
@@ -181,6 +212,18 @@ const LinhaDetalhes = () => {
           )}
         </div>
       </section>
+      <button 
+  className="botao-navegacao-flutuante"
+  onClick={toggleNavegacao}
+  title={mostrarTabela ? "Voltar para os filtros" : "Ir para a tabela"}
+>
+  {mostrarTabela ? (
+    <FaArrowUp /> // Ícone para subir
+  ) : (
+    <FaArrowDown /> // Ícone para descer
+  )}
+</button>
+
     </div>
   );
 };

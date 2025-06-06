@@ -14,7 +14,7 @@
     background-color: none;
     color: #004AAD;
     border: 2px solid #004AAD;
-    height: 50%;
+    height: 105%;
     font-weight: bold;
     padding: 10px 19px;
     border-radius: 12px;
@@ -78,10 +78,16 @@
     color: white;
 }
 
-.btn-dia.selecionado,
-.btn-partida.selecionado {
-    background-color: #003580;
+.btn-dia.active, 
+.btn-partida.active {
+    background-color: #004AAD;
     color: white;
+    border-color: #004AAD;
+}
+
+.btn-dia.active:hover, 
+.btn-partida.active:hover {
+    background-color: #003580;
     border-color: #003580;
 }
 
@@ -196,7 +202,7 @@ table tr:nth-child(even) {
 }
 
 /* Ajustes para dispositivos móveis */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
 
     
     .info-container {
@@ -239,4 +245,30 @@ table tr:nth-child(even) {
         text-align: center;
         font-family: 'Poppins', sans-serif;
     }
+    
+}
+
+.botao-navegacao-flutuante {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #004AAD;
+  color: white;
+  border: 2px solid #FFCC00;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.botao-navegacao-flutuante:hover {
+  background-color: #003580;
+  transform: scale(1.1);
 }
