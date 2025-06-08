@@ -125,7 +125,14 @@ const toggleNavegacao = () => {
         <div className="linha-container">
           <div className='special-buttons'>
             <a href="/" className="linha-button" title="Página Inicial"><FaHome /></a>
-            <a href="/" className="linha-button" title="Baixar em PDF"><FaFilePdf /></a>
+            <a 
+              href={linha?.link_pdf || "#"} 
+              className="linha-button" 
+              title="Baixar em PDF"
+              download // Esta propriedade força o download
+            >
+            <FaFilePdf />
+            </a>
             <a href="/" className="linha-button" title="Itinerário"><FaBus /></a>
           </div>
           <button className="linha-selected">Horário {id} - {linha.nome}</button>
@@ -178,7 +185,7 @@ const toggleNavegacao = () => {
         <div id="horarios-tabela" className="horarios-tabela">
           {!horarios ? (
             <div className="tabela">
-              <h3>{getDiaHorario()} - {partidaSelecionada}</h3>
+              <h3 id='header-horarios'>{getDiaHorario()} - {partidaSelecionada}</h3>
               <table><tbody><tr><td>Não há horários disponíveis</td></tr></tbody></table>
             </div>
           ) : semCirculacao ? (
@@ -192,7 +199,7 @@ const toggleNavegacao = () => {
               <table>
                 <thead>
                   <tr>
-                    <th>Partindo de</th>
+                    <th>Partindo do</th>
                     <th>Horário</th>
                   </tr>
                 </thead>

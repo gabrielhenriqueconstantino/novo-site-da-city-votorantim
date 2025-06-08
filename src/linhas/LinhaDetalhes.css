@@ -177,6 +177,7 @@ table tr:nth-child(even) {
     color: #333;
     line-height: 1.5; /* Espaçamento entre linhas */
     font-family: 'Poppins', sans-serif;
+    font-weight: 600;
 }
 
 .loading-container {
@@ -271,4 +272,10 @@ table tr:nth-child(even) {
 .botao-navegacao-flutuante:hover {
   background-color: #003580;
   transform: scale(1.1);
+}
+
+.linha-button[href="#"] {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
 }

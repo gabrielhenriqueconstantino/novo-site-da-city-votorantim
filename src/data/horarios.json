@@ -16,9 +16,10 @@
         "CENTRO": "NÃO HÁ CIRCULAÇÃO DE ÔNIBUS NESSA LINHA"
       },
         "local_partida": {
-          "BAIRRO": "Rua Lourenço Mouro",
+          "BAIRRO": "Estrada Oswaldo Pires de Camargo",
           "CENTRO": "Terminal Urbano João Souto"
-      }
+      },
+        "link_pdf": "https://drive.usercontent.google.com/u/0/uc?id=1DZ_jI_I8EBCczYXaRmnIz_EjW571oQ43&export=download"
     },
     "3102": {
       "nome": "Itapeva Direto",
@@ -26,7 +27,7 @@
       "dias_uteis": {
         "BAIRRO": ["04:05 (Atende Jd. Europa, Pq. São João e Votocel)", 
                    "05:10 (Atende Votocel)", "06:05", "06:20 (Atende Jd. Europa)", 
-                   "07:30 (Atende Jd. Europa)", "08:30", "16:20 (Atende Av. Anália Pereira até Rod. Raimundo Antunes Soares", 
+                   "07:30 (Atende Jd. Europa)", "08:30", "16:20 (Atende Rua Anália Pereira até Rod. Raimundo Antunes Soares", 
                    "17:30 (Atende Votocel)", "18:10", "18:40 (Atende Votocel)"],
                    
         "CENTRO": ["05:45", "06:40", "06:55", "07:55", "15:45", 
@@ -43,11 +44,16 @@
       "domingos_feriados": {
         "BAIRRO": ["04:05 (Atende Jd. Europa, Pq. São João e Votocel)", "07:10"],
         "CENTRO": ["10:30"]
-      }
+      },
+      "local_partida": {
+          "BAIRRO": "Rua Lourenço Mouro",
+          "CENTRO": "Terminal Urbano João Souto"
+      },
+      "link_pdf": "https://drive.usercontent.google.com/u/0/uc?id=1s84N-k6OOsS7tH57ciYAzv7KgRMtGX6p&export=download"
     },
     "3103": {
       "nome": "São Lucas/Carrefour via Jataí",
-      "vigencia": "14/09/2024",
+      "vigencia": "31/03/2025",
       "dias_uteis": {
         "BAIRRO": ["05:15", "05:20", "06:00", "06:15", "06:30", "07:00", "07:35", "07:55", 
                    "08:30", "08:55", "09:10", "10:40", "11:55", "13:00", "13:10", "14:00", 
@@ -71,7 +77,12 @@
 
         "SHOPPING": ["05:55", "07:15", "08:35", "09:45", "11:20", "12:35", 
                      "13:50", "15:30", "16:55", "18:15", "19:35", "21:15", "22:30", "23:40"]
-      }
+      },
+      "local_partida": {
+          "BAIRRO": "Rua Lourenço Mouro",
+          "SHOPPING": "Av. Profª Izoraida Marques Peres"
+      },
+      "link_pdf": "https://drive.usercontent.google.com/u/0/uc?id=18JVwC7yVgvUCw3A-R1vleaS82tnA1ZYC&export=download"
     },
     "3104": {
       "nome": "Serrano via Vossoroca",
@@ -83,10 +94,10 @@
 
         "CENTRO": ["04:40", "05:20", "06:00", "06:40", "07:20", "08:00", "09:05", "09:55", "10:45", 
                    "11:35", "12:25", "13:15", "14:05", "15:15", "16:05", "16:50", "17:45", "18:35", 
-                   "19:25", "20:15", "21:20", "22:00", "22:40", "23:20", "00:05 (Atende Fiação Alpina)"]
+                   "19:25", "20:15", "21:20", "22:00", "22:40", "23:20", "00:05 (Atende Mirante dos Óvnis)"]
       },
       "sabados": {
-        "BAIRRO": ["04:10 (Atende Mirante dos Óvnis)", "05:00", "05:40", "06:50", "08:20", "09:40", 
+        "BAIRRO": ["04:10 (Atende Fiação Alpina)", "05:00", "05:40", "06:50", "08:20", "09:40", 
                    "11:00", "12:20", "13:40", "15:20", "16:40", "18:00", "19:20", "21:00", "21:40", 
                    "22:20", "23:00", "23:40"],
                    
@@ -102,18 +113,19 @@
                    "17:35", "18:55", "20:15", "21:20", "22:00", "22:40 (Atende Mirante dos Óvnis)", 
                    "23:20", "00:05 (Atende Mirante dos Óvnis)"]
       },
-      "observacoes": {
-        "B": "ATENDE FIAÇÃO ALPNA",
-        "C": "ATENDE MIRANTE DOS OIVINS"
-      }
+      "local_partida": {
+          "BAIRRO": "Rua Elzir Ribeiro, 23",
+          "CENTRO": "Terminal Urbano João Souto"
+      },
+      "link_pdf": "https://drive.usercontent.google.com/u/0/uc?id=1uorJX6hZ0NG4EHp4LQF1ehrH2-Vdw8iE&export=download"
     },
     "3105": {
       "nome": "Serrano via Vila Galli",
       "vigencia": "31/03/2025",
       "dias_uteis": {
-        "BAIRRO": ["04:05 (Atende Fiação Alpina)", "04:45", "05:25", "06:05", "06:55 B", "07:55", "09:15", "10:15", "11:15", 
+        "BAIRRO": ["04:05 (Atende Fiação Alpina)", "04:45", "05:25", "06:05", "06:55 (Atende Etec Votocel)", "07:55", "09:15", "10:15", "11:15", 
                    "12:15", "13:15", "14:35", "15:35", "16:35", "17:35 (Atende Etec Votocel)", "18:35", "19:25", "20:15", 
-                   "21:00", "22:10 (Atende Etec Votocel", "23:15"],
+                   "21:00", "22:10 (Atende Etec Votocel)", "23:15"],
 
         "CENTRO": ["05:05", "05:45", "06:35", "07:25 B", "08:25", "09:45", "10:45", "11:45", "12:45", "13:45", "15:05", 
                    "16:05", "17:05 (Atende Etec Votocel)", "18:05", "19:00 (Atende Etec Votocel)", "19:50", "20:40", 
@@ -131,21 +143,23 @@
 
         "CENTRO": ["05:25", "06:50", "08:50", "10:30", "12:10", "13:50", "15:55", "17:50", "19:45", "22:00", "00:00"]
       },
-      "observacoes": {
-        "A": "ATENDE FIAÇÃO ALPINA",
-        "B": "ATENDE VOTOCEL ETEC"
-      }
+      "local_partida": {
+          "BAIRRO": "Rua Elzir Ribeiro, 23",
+          "CENTRO": "Terminal Urbano João Souto"
+      },
+      "link_pdf": "https://drive.usercontent.google.com/u/0/uc?id=1PUql1lfTI70pWITuy-YpcNX8z8QCX_F5&export=download"
     },
     "3106": {
       "nome": "Shopping via Jd. Paraíso",
-      "vigencia": "14/09/2024",
+      "vigencia": "05/08/2024",
       "dias_uteis": {
         "BAIRRO": ["04:10", "05:00", "05:50", "06:40", "07:30", "08:20", "09:30", "10:20", "11:10", "12:00", "12:50", 
-                   "13:40", "14:30", "15:40", "16:30", "17:25 D", "18:20", "19:15 D", "20:10", "21:00", "22:10", "23:00"],
+                   "13:40", "14:30", "15:40", "16:30", "17:25 (Atende Pq. Santa Márcia)", "18:20", 
+                   "19:15 (Atende Pq. Santa Márcia)", "20:10", "21:00", "22:10", "23:00"],
 
         "CENTRO": ["04:35", "05:25", "06:15", "07:05", "07:55", "09:05", "09:55", "10:45", "11:35", "12:25", "13:15", 
-                   "14:05", "15:15", "16:05", "16:55 D", "17:55", "18:45 (Atende Pq. Santa Márcia)", "19:45", "20:35", 
-                   "21:45", "22:35", "23:30"]
+                   "14:05", "15:15", "16:05", "16:55 (Atende Pq. Santa Márcia)", "17:55", "18:45 (Atende Pq. Santa Márcia)", 
+                   "19:45", "20:35", "21:45", "22:35", "23:30"]
       },
       "sabados": {
         "BAIRRO": ["04:35", "05:40", "06:40", "07:40", "08:40", "10:00", "11:00", "12:00", "13:00", "14:10", "15:30", 
@@ -158,13 +172,15 @@
         "BAIRRO": "NÃO HÁ CIRCULAÇÃO DE ÔNIBUS NESSA LINHA",
         "CENTRO": "NÃO HÁ CIRCULAÇÃO DE ÔNIBUS NESSA LINHA"
       },
-      "observacoes": {
-        "D": "ATENDE PARQUE SANTA MÁRCIA"
-      }
+      "local_partida": {
+          "BAIRRO": "Avenida Adolpho Massaglia, 825",
+          "CENTRO": "Terminal Urbano João Souto"
+      },
+      "link_pdf": "https://drive.usercontent.google.com/u/0/uc?id=1QJZk6KZflnpGXHkTkZQW6_iY_PnSHC9Y&export=download"
     },
     "3107": {
       "nome": "Shopping via Jd. Clarice",
-      "vigencia": "14/09/2024",
+      "vigencia": "21/10/2024",
       "dias_uteis": {
         "SHOPPING": ["04:45", "05:35", "06:25", "07:15", "08:10", "09:25", "10:25", "11:25", "12:25", "13:25", "14:25", 
                      "15:45", "16:45", "17:45", "18:45", "19:45", "20:45", "21:55", "22:45", "23:35"],
@@ -179,7 +195,12 @@
       "domingos_feriados": {
         "SHOPPING": ["05:25", "06:50", "08:15", "10:05", "11:40", "13:15", "14:50", "16:45", "18:20", "19:55", "21:45", "23:10"],
         "CENTRO": ["05:00", "06:25", "07:50", "09:35", "11:10", "12:45", "14:20", "16:15", "17:50", "19:25", "21:20", "22:45"]
-      }
+      },
+      "local_partida": {
+          "SHOPPING": "Avenida Gisele Constantino",
+          "CENTRO": "Terminal Urbano João Souto"
+      },
+      "link_pdf": "https://drive.usercontent.google.com/u/0/uc?id=15BjG0awYQKyo7fd4SIQGLLVwiKYQIxB2&export=download"
     },
     "3108": {
       "nome": "Novo Mundo via Pq. Bela Vista/Shopping",
@@ -207,14 +228,15 @@
         "BAIRRO": ["05:35", "07:20", "09:25", "11:10", "12:55", "14:40", "16:45", "18:30", "20:15", "22:20", "23:15"],
         "CENTRO": ["05:10", "06:55", "09:00", "10:45", "12:30", "14:15", "16:20", "18:05", "19:50", "21:55", "22:55", "23:50"]
       },
-      "observacoes": {
-        "A": "ATENDE SOMENTE ESCOLA SELMA MARIA",
-        "B": "ATENDE ESCOLA SELMA MARIA E POSTO DE SAÚDE JD.TATIANA"
-      }
+      "local_partida": {
+          "BAIRRO": "Rua Ozete dos Santos",
+          "CENTRO": "Terminal Urbano João Souto"
+      },
+      "link_pdf": "https://drive.usercontent.google.com/u/0/uc?id=1GkxX83dxYQShZOxITM1RKe6rwPzTQLuK&export=download"
     },
     "3110": {
       "nome": "Green Valley via Shopping",
-      "vigencia": "14/09/2024",
+      "vigencia": "02/07/2024",
       "dias_uteis": {
         "BAIRRO": ["05:10", "06:10", "07:10", "08:10", "09:10", "10:30", "11:30", "12:30", "13:30", "14:30", "15:50", 
                    "16:55", "18:00", "19:00", "20:00", "21:15", "22:10", "23:10"],
@@ -229,15 +251,20 @@
       "domingos_feriados": {
         "BAIRRO": ["07:20", "08:20", "09:20", "11:55", "17:45", "18:50"],
         "CENTRO": ["06:55", "07:55", "08:55", "11:30", "17:20", "18:25"]
-      }
+      },
+      "local_partida": {
+          "BAIRRO": "Rua Vicentina Carriel Cleto",
+          "CENTRO": "Terminal Urbano João Souto"
+      },
+      "link_pdf": "https://drive.usercontent.google.com/u/0/uc?id=1K2k8jFGJR0BBspp43Jea43OxKd7jBAjM&export=download"
     },
     "3111": {
       "nome": "Vila Nova via Vila Irineu",
-      "vigencia": "14/09/2024",
+      "vigencia": "08/05/2025",
       "dias_uteis": {
         "BAIRRO": ["04:05 (Atende Fiação Alpina e Vila Garcia)", "04:40", "05:25", "05:40", "05:50", "06:10", "06:26 (Atende Altos de Votorantim)", 
                    "06:42", "06:58 (Atende Altos de Votorantim)", "07:14", "07:30 (Atende Altos de Votorantim)", 
-                   "07:46", "08:02 (Atende Altos de Votorantim)", "08:18", "08:34 (Atende Altos de Votorantim)", 
+                   "07:46", "08:02 (Atende Altos de Votorantim)", "08:18", "08:40 (Atende Altos de Votorantim)", 
                    "08:50", "09:20 (Atende Altos de Votorantim)", "09:46", "10:12 (Atende Altos de Votorantim)", "10:38", 
                    "11:04 (Atende Altos de Votorantim)", "11:30", "11:56 (Atende Altos de Votorantim)", "12:22", 
                    "12:48 (Atende Altos de Votorantim)", "13:10", "13:20", "13:40 (Atende Altos de Votorantim)", 
@@ -258,7 +285,7 @@
                    "17:38 (Atende Altos de Votorantim)", "17:54", "18:10 (Atende Altos de Votorantim)", "18:26", 
                    "18:42 (Atende Altos de Votorantim)", "18:58", "19:14 (Atende Altos de Votorantim)", "19:30", 
                    "20:10 (Atende Altos de Votorantim)", "20:45", "21:20 (Atende Altos de Votorantim)", "21:55", 
-                   "22:30 (Atende Altos de Votorantim)", "23:05", "23:40 (Atende Altos de Votorantim)", "00:05"]
+                   "22:30 (Vai até a Caixa D'Água B. dos Morros)", "23:05", "23:40 (Atende Altos de Votorantim)", "00:05"]
       },
       "sabados": {
         "BAIRRO": ["04:05 (Atende Fiação Alpina e Vila Garcia)", "04:45", "05:25", "06:05", "06:45", "07:25", "08:05", 
@@ -276,17 +303,15 @@
         "CENTRO": ["04:45", "06:05", "07:25", "08:45", "10:25", "11:45", "13:05", "14:25", "16:05", "17:25", "18:45", 
                    "20:05", "21:45", "23:05", "00:05"]
       },
-      "observacoes": {
-        "A": "ATENDE FAÇÃO ALPINA",
-        "B": "VAI ATÉ A CAIXA D'ÁGUA BAIRRO DOS MORROS",
-        "C": "ATENDE VILA GARCIA",
-        "D": "ATENDE ALTOS DE VOTORANTIM",
-        "E": "INICIA E E ARMANDO RIZCO"
-      }
+      "local_partida": {
+          "BAIRRO": "Rua Nadir Pinto Vieira",
+          "CENTRO": "Terminal Urbano João Souto"
+      },
+      "link_pdf": "https://drive.usercontent.google.com/u/0/uc?id=1k4gGblARThy1IisQvgHdbWQUcPDDfncO&export=download"
     },
     "3112": {
       "nome": "Vila Garcia - DIRETO",
-      "vigencia": "14/09/2024",
+      "vigencia": "05/08/2024",
       "dias_uteis": {
         "BAIRRO": ["05:00", "05:45", "06:35", "07:25", "08:15", "09:25", "10:15", "11:05", "11:55", "12:45", "13:35", 
                    "14:45", "15:35", "16:25", "17:15", "18:05", "18:55", "19:45", "20:50", "21:35", "22:15", "22:55", 
@@ -303,11 +328,16 @@
       "domingos_feriados": {
         "BAIRRO": ["04:50", "06:30", "08:15", "10:20", "12:05", "13:50", "15:55", "17:40", "19:25", "21:30"],
         "CENTRO": ["06:15", "08:00", "10:05", "11:50", "13:35", "15:40", "17:25", "19:10", "21:15"]
-      }
+      },
+      "local_partida": {
+          "BAIRRO": "Avenida Vinte e Sete de Março",
+          "CENTRO": "Terminal Urbano João Souto"
+      },
+      "link_pdf": "https://drive.usercontent.google.com/u/0/uc?id=1UFQMX4YDmMmzkszM-KUvUKGYmELk5TzI&export=download"
     },
     "3113": {
       "nome": "Karafá",
-      "vigencia": "14/09/2024",
+      "vigencia": "02/07/2024",
       "dias_uteis": {
         "BAIRRO": ["06:00", "11:30", "14:00", "19:15"],
         "CENTRO": ["04:55", "10:30", "13:00", "18:15"]
@@ -319,11 +349,16 @@
       "domingos_feriados": {
         "BAIRRO": "NÃO HÁ CIRCULAÇÃO DE ÔNIBUS NESSA LINHA",
         "CENTRO": "NÃO HÁ CIRCULAÇÃO DE ÔNIBUS NESSA LINHA"
-      }
+      },
+      "local_partida": {
+          "BAIRRO": "Estrada Pedro Monari, 2012 - Em frente ao condomínio",
+          "CENTRO": "Terminal Urbano João Souto"
+      },
+      "link_pdf": "https://drive.usercontent.google.com/u/0/uc?id=19-C4sufsUgLqxkWkwu68hi5ybRka6nR9&export=download"
     },
     "3115": {
       "nome": "Fornazari via Cemitério",
-      "vigencia": "14/09/2024",
+      "vigencia": "21/10/2024",
       "dias_uteis": {
         "BAIRRO": ["04:45", "05:20", "05:55", "06:30", "07:15", "08:00", "08:45", "09:50", "10:35", "11:20", "12:05", 
                    "12:50", "13:35", "14:20", "15:25", "16:10", "16:55", "17:40", "18:25", "19:10", "19:55", "21:00", 
@@ -345,11 +380,16 @@
                    "22:30", "23:55"],
         "CENTRO": ["05:50", "07:15", "09:00", "10:35", "12:10", "13:45", "15:40", "17:15", "18:50", "20:25", "22:10", 
                    "23:35", "00:05"]
-      }
+      },
+      "local_partida": {
+          "BAIRRO": "Rua Paschoal Gerônimo Fornazari",
+          "CENTRO": "Terminal Urbano João Souto"
+      },
+      "link_pdf": "https://drive.usercontent.google.com/u/0/uc?id=1tWKB0JlLhvgcjmDQmWYhlY1Gjt78mlLc&export=download"
     },
     "3116": {
       "nome": "Itapeva via Jataí",
-      "vigencia": "12/08/2024",
+      "vigencia": "28/05/2025",
       "dias_uteis": {
         "BAIRRO": ["04:40", "05:30", "05:50", "06:40", "07:00", "07:15", "07:50", "08:10", "09:20", "09:55", "10:30", 
                    "11:05", "11:40", "12:15", "12:50", "13:25", "14:00", "14:35", "15:30", "16:05", "16:40", "17:15", 
@@ -357,30 +397,32 @@
 
         "CENTRO": ["05:10", "06:05", "06:25", "07:15", "07:35", "08:45", "09:20", "09:55", "10:30", "11:05", "11:40", 
                    "12:15", "12:50", "13:25", "14:00", "14:35", "15:10", "16:05", "16:40", "17:15", "17:50", "18:25", 
-                   "19:00", "19:45", "20:40", "21:20", "21:50", "22:35 (Atende Escola Comendador Pereira Inácio)", 
-                   "23:00", "23:30", "00:05 (Atende Escola Comendador Pereira Inácio)"]
+                   "19:00", "19:45", "20:40", "21:20", "21:50", "22:35 (Atende Votocel)", 
+                   "23:00", "23:30", "00:05 (Atende Votocel)"]
       },
       "sabados": {
         "BAIRRO": ["04:40", "05:40", "06:45", "07:55", "09:35", "10:45", "11:55", "13:05", "14:15", "15:45", "16:55", 
                    "18:05", "19:15", "20:25", "21:55", "23:05"],
 
         "CENTRO": ["05:10", "06:15", "07:20", "08:30", "10:10", "11:20", "12:30", "13:40", "14:50", "16:20", "17:30", 
-                   "18:40", "19:50", "21:20", "22:35", "23:30", "00:05 (Atende Escola Comendador Pereira Inácio)"]
+                   "18:40", "19:50", "21:20", "22:35", "23:30", "00:05 (Atende Votocel)"]
       },
       "domingos_feriados": {
         "BAIRRO": ["04:40", "05:40", "06:45", "07:55", "09:35", "10:45", "11:55", "13:05", "14:15", "15:45", "16:55", 
                    "18:05", "19:15", "20:25", "21:55", "23:05"],
 
         "CENTRO": ["05:10", "06:15", "07:20", "08:30", "10:10", "11:20", "12:30", "13:40", "14:50", "16:20", "17:30", 
-                   "18:40", "19:50", "21:20", "22:35", "23:30", "00:05 (Atende Escola Comendador Pereira Inácio)"]
+                   "18:40", "19:50", "21:20", "22:35", "23:30", "00:05 (Atende Votocel)"]
       },
-      "observacoes": {
-        "A": "ATENDE ESCOLA COMENDADOR PEREIRA INÁCIO"
-      }
+      "local_partida": {
+          "BAIRRO": "Rua Lourenço Mouro",
+          "CENTRO": "Terminal Urbano João Souto"
+      },
+      "link_pdf": "https://drive.usercontent.google.com/u/0/uc?id=1-4U8I1Hn961gfeKrjBoP5EJLYWvFNbX2&export=download"
     },
     "3118": {
       "nome": "Parque São João via Votocel",
-      "vigencia": "14/09/2024",
+      "vigencia": "12/08/2024",
       "dias_uteis": {
         "BAIRRO": ["05:05", "05:50", "06:40", "07:30", "08:20", "09:30", "10:15", "11:05", "11:55", "12:45", "13:35", 
                    "14:25", "15:30", "16:20", "17:10", "18:00", "18:50", "19:40", "20:50", "21:40", "22:30", "23:20"],
@@ -395,11 +437,16 @@
       "domingos_feriados": {
         "BAIRRO": ["06:25", "08:05", "10:05", "11:45", "13:25", "15:25", "17:20", "19:15", "21:30", "23:30"],
         "CENTRO": ["06:10", "07:40", "09:40", "11:20", "13:00", "15:00", "16:55", "18:50", "21:00", "23:00"]
-      }
+      },
+      "local_partida": {
+          "BAIRRO": "Rua Derli Prado",
+          "CENTRO": "Terminal Urbano João Souto"
+      },
+      "link_pdf": "https://drive.usercontent.google.com/u/0/uc?id=1pkHjI87LtyqFCMouoPjBfDZFf6T_yKon&export=download"
     },
     "3122": {
       "nome": "Angelo Vial via Jd. Archilla",
-      "vigencia": "14/09/2024",
+      "vigencia": "02/07/2024",
       "dias_uteis": {
         "BAIRRO": ["06:05", "06:40", "07:15", "07:50", "08:25", "09:20", "09:55", "10:30", "11:05", "11:40", "12:15", 
                    "12:50", "13:25", "14:00", "14:35", "15:30", "16:05", "16:40", "17:15", "17:50", "18:25", "19:00", 
@@ -416,7 +463,12 @@
       "domingos_feriados": {
         "BAIRRO": ["06:15", "07:25", "09:00", "10:20", "11:40", "13:00", "14:20", "16:00", "17:20", "18:40", "20:00"],
         "CENTRO": ["06:00", "07:10", "08:45", "10:05", "11:25", "12:45", "14:05", "15:45", "17:05", "18:25", "19:45"]
-      }
+      },
+      "local_partida": {
+          "BAIRRO": "Rua Joaquim Corrêa",
+          "CENTRO": "Terminal Urbano João Souto"
+      },
+      "link_pdf": "https://drive.usercontent.google.com/u/0/uc?id=1UQmmIG28IEv_VcbKc9V6vlDnOlKZTSl2&export=download"
     },
     "3123": {
       "nome": "Etec Votocel",
@@ -427,44 +479,48 @@
       },
       "sabados": {
         "BAIRRO": "NÃO HÁ CIRCULAÇÃO DE ÔNIBUS NESSA LINHA",
-        "CENTRO": []
+        "CENTRO": "NÃO HÁ CIRCULAÇÃO DE ÔNIBUS NESSA LINHA"
       },
       "domingos_feriados": {
         "BAIRRO": "NÃO HÁ CIRCULAÇÃO DE ÔNIBUS NESSA LINHA",
-        "CENTRO": []
+        "CENTRO": "NÃO HÁ CIRCULAÇÃO DE ÔNIBUS NESSA LINHA"
       },
-      "observacoes": {
-        "A": "ATENDE ESCOLA COMENDADOR PEREIRA INÁCIO"
-      }
+      "local_partida": {
+          "BAIRRO": "Rua Eugênio Ildefonso",
+          "CENTRO": "Terminal Urbano João Souto"
+      },
+      "link_pdf": "https://drive.usercontent.google.com/u/0/uc?id=1vTmoDs-z7l05UxPAoeqIqw01tc7OuUpR&export=download"
     },
     "3125": {
       "nome": "Alphaville",
-      "vigencia": "14/09/2024",
+      "vigencia": "22/04/2025",
       "dias_uteis": {
         "BAIRRO": ["07:15", "08:15", "09:45", "10:55", "12:00", "13:05", "14:10 (Inicia em Aldeia da Mata)", 
                    "15:25 (Inicia em Aldeia da Mata)", "16:20 (Inicia em Aldeia da Mata)", "17:20 (Inicia em Aldeia da Mata)", 
                    "18:25 (Inicia em Aldeia da Mata)", "19:35 (Inicia em Aldeia da Mata)"],
 
-        "CENTRO": ["05:40", "06:35", "07:35", "09:05", "10:15", "11:20", "12:25", "13:30 (Inicia em Aldeia da Mata)", 
-                   "14:45 (Inicia em Aldeia da Mata)", "15:55 (Inicia em Aldeia da Mata)", "16:55 (Inicia em Aldeia da Mata)", 
-                   "17:55 (Inicia em Aldeia da Mata)", "18:55 (Inicia em Aldeia da Mata)"]
+        "CENTRO": ["05:40", "06:35", "07:35", "09:05", "10:15", "11:20", "12:25", "13:30 (Até Aldeia da Mata)", 
+                   "14:45 (Até Aldeia da Mata)", "15:55 (Até Aldeia da Mata)", "16:55 (Até Aldeia da Mata)", 
+                   "17:55 (Até Aldeia da Mata)", "18:55 (Até Aldeia da Mata)"]
       },
       "sabados": {
         "BAIRRO": ["07:15", "08:15", "09:45", "10:55", "12:00", "13:05", "14:10 (Inicia em Aldeia da Mata)", 
                    "15:25 (Inicia em Aldeia da Mata)", "16:20 (Inicia em Aldeia da Mata)", "17:15 (Inicia em Aldeia da Mata)", 
                    "18:25 (Inicia em Aldeia da Mata)", "19:35 (Inicia em Aldeia da Mata)"],
 
-        "CENTRO": ["06:35", "07:35", "09:05", "10:15", "11:20", "12:25", "13:30 (Inicia em Aldeia da Mata)", 
-                   "14:45 (Inicia em Aldeia da Mata)", "15:50 (Inicia em Aldeia da Mata)", "16:45 (Inicia em Aldeia da Mata)", 
-                   "17:45 (Inicia em Aldeia da Mata)", "18:55 (Inicia em Aldeia da Mata)"]
+        "CENTRO": ["06:35", "07:35", "09:05", "10:15", "11:20", "12:25", "13:30 (Até Aldeia da Mata)", 
+                   "14:45 (Até Aldeia da Mata)", "15:50 (Até Aldeia da Mata)", "16:45 (Até Aldeia da Mata)", 
+                   "17:45 (Até Aldeia da Mata)", "18:55 (Até Aldeia da Mata)"]
       },
       "domingos_feriados": {
         "BAIRRO": "NÃO HÁ CIRCULAÇÃO DE ÔNIBUS NESSA LINHA",
-        "CENTRO": []
+        "CENTRO": "NÃO HÁ CIRCULAÇÃO DE ÔNIBUS NESSA LINHA"
       },
-      "observacoes": {
-        "A": "ALDEIA DA MATA"
-      }
+      "local_partida": {
+          "BAIRRO": "Avenida Júlio Cassola",
+          "CENTRO": "Terminal Urbano João Souto"
+      },
+      "link_pdf": "https://drive.usercontent.google.com/u/0/uc?id=1v7US3X2VIGonwBzlH0l_k05zZfAdFTDG&export=download"
     },
     "3126": {
       "nome": "Bairro dos Morros",
@@ -475,19 +531,21 @@
                    "20:15 (Atende Vale do Sol)"],
                    
         "CENTRO": ["06:35", "07:40", "12:00 (Atende Vale do Sol)", "17:20 (Atende Vale do Sol)", 
-                   "18:30(Atende Vale do Sol)", "19:40 (Atende Vale do Sol)"]
+                   "18:30 (Atende Vale do Sol)", "19:40 (Atende Vale do Sol)"]
       },
       "sabados": {
         "BAIRRO": ["05:50", "17:55"],
         "CENTRO": ["06:35", "17:20"]
       },
       "domingos_feriados": {
-        "BAIRRO": [],
+        "BAIRRO": "NÃO HÁ CIRCULAÇÃO DE ÔNIBUS NESSA LINHA",
         "CENTRO": "NÃO HÁ CIRCULAÇÃO DE ÔNIBUS NESSA LINHA"
       },
-      "observacoes": {
-        "A": "ATENDE VALE DO SOL"
-      }
+      "local_partida": {
+          "BAIRRO": "Rua C",
+          "CENTRO": "Terminal Urbano João Souto"
+      },
+      "link_pdf": "https://drive.usercontent.google.com/u/0/uc?id=1MPda6d45aY_6s842akqxnGb5-koox9AR&export=download"
     },
     "3128": {
       "nome": "Vila Nova/Iguatemi via Vila Garcia",
@@ -519,10 +577,11 @@
                      "08:15 (NÃO atende Vila Garcia e Pró-Morar)", "14:50", "16:10", "17:20", "18:20", "19:20", 
                      "20:40", "21:35", "22:30", "23:30"]
       },
-      "observacoes": {
-        "A": "NÃO ATENDE VILA GARCIA E PRÓ-MORAR",
-        "B": "NÃO ATENDE VILA GARCIA"
-      }
+      "local_partida": {
+          "BAIRRO": "Rua Odete Gori Bicudo",
+          "SHOPPING": "Av. Profª Izoraida Marques Peres - Shopping Iguatemi"
+      },
+      "link_pdf": "https://drive.usercontent.google.com/u/0/uc?id=17ciKI7W6uIf4GDYUEpBNtWIwU-ZI1rrn&export=download"
     }
   }
 }
