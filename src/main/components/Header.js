@@ -1,56 +1,135 @@
-// Componente do cabeçalho com navegação e menu hambúrguer para telas pequenas
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import '../styles/Header.css';
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
 
-  return (
-    <header className="header">
-      <nav className="nav">
-        <div className="logo">
-        <img src="http://votorantim.citymais.com.br/wp-content/uploads/2020/07/logo-city3.png" alt="Logo da CITY+"></img>
-          <Link to="/"></Link>
-        </div>
-          
-        <div className="hamburger" onClick={toggleMenu}>
-          <span className={`bar bar1 ${menuOpen ? 'open' : ''}`}></span>
-          <span className={`bar bar2 ${menuOpen ? 'open' : ''}`}></span>
-          <span className={`bar bar3 ${menuOpen ? 'open' : ''}`}></span>
-        </div>
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
 
-        <ul className={`nav-links ${menuOpen ? 'active' : ''}`}>
-          <li>
-            <NavLink to="/" end onClick={() => setMenuOpen(false)}
-              className={({ isActive }) => (isActive ? 'active' : '')}>
-              HORÁRIOS
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/projects" onClick={() => setMenuOpen(false)}
-              className={({ isActive }) => (isActive ? 'active' : '')}>
-              ITINERÁRIOS
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/blog" onClick={() => setMenuOpen(false)}
-              className={({ isActive }) => (isActive ? 'active' : '')}>
-              CADASTRO
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/contact" onClick={() => setMenuOpen(false)}
-              className={({ isActive }) => (isActive ? 'active' : '')}>
-              FALE CONOSCO
-            </NavLink>
-          </li>
-        </ul>
-      </nav>
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 10);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return (
+    <header className={`header ${scrolled ? 'scrolled' : ''}`}>
+      <div className="header-container">
+        <nav className="nav">
+          <div className="logo-container">
+            <Link to="/" onClick={closeMenu}>
+              <img 
+                src="http://votorantim.citymais.com.br/wp-content/uploads/2020/07/logo-city3.png" 
+                alt="Logo da CITY+" 
+                className="logo-img"
+              />
+            </Link>
+          </div>
+
+          {/* Menu desktop */}
+          <ul className="nav-links">
+            <li>
+              <NavLink 
+                to="/" 
+                end 
+                className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
+              >
+                HORÁRIOS
+              </NavLink>
+            </li>
+            <li>
+              <NavLink 
+                to="/projects" 
+                className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
+              >
+                ITINERÁRIOS
+              </NavLink>
+            </li>
+            <li>
+              <NavLink 
+                to="/blog" 
+                className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
+              >
+                CADASTRO
+              </NavLink>
+            </li>
+            <li>
+              <NavLink 
+                to="/contact" 
+                className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
+              >
+                FALE CONOSCO
+              </NavLink>
+            </li>
+          </ul>
+
+          {/* Menu hambúrguer (mobile) */}
+          <div 
+            className={`hamburger ${menuOpen ? 'open' : ''}`} 
+            onClick={toggleMenu}
+            aria-label="Menu"
+            aria-expanded={menuOpen}
+          >
+            <span className="bar"></span>
+            <span className="bar"></span>
+            <span className="bar"></span>
+          </div>
+        </nav>
+
+        {/* Menu mobile */}
+        <div className={`mobile-menu ${menuOpen ? 'open' : ''}`}>
+          <ul className="mobile-nav-links">
+            <li>
+              <NavLink 
+                to="/" 
+                end 
+                onClick={closeMenu}
+                className={({ isActive }) => `mobile-nav-item ${isActive ? 'active' : ''}`}
+              >
+                HORÁRIOS
+              </NavLink>
+            </li>
+            <li>
+              <NavLink 
+                to="/projects" 
+                onClick={closeMenu}
+                className={({ isActive }) => `mobile-nav-item ${isActive ? 'active' : ''}`}
+              >
+                ITINERÁRIOS
+              </NavLink>
+            </li>
+            <li>
+              <NavLink 
+                to="/blog" 
+                onClick={closeMenu}
+                className={({ isActive }) => `mobile-nav-item ${isActive ? 'active' : ''}`}
+              >
+                CADASTRO
+              </NavLink>
+            </li>
+            <li>
+              <NavLink 
+                to="/contact" 
+                onClick={closeMenu}
+                className={({ isActive }) => `mobile-nav-item ${isActive ? 'active' : ''}`}
+              >
+                FALE CONOSCO
+              </NavLink>
+            </li>
+          </ul>
+        </div>
+      </div>
     </header>
   );
 };
