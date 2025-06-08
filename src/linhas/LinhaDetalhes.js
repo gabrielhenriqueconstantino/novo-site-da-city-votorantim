@@ -1,17 +1,22 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState, useEffect, link } from 'react';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { FaClock, FaArrowsAltH, FaMapMarkerAlt, FaCalendarAlt, FaHome, FaFilePdf, FaBus, FaArrowDown, FaArrowUp } from 'react-icons/fa';
 import horariosData from '../data/horarios.json';
 import './LinhaDetalhes.css';
 
+
+
 const LinhaDetalhes = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [linha, setLinha] = useState(null);
-  const [diaSelecionado, setDiaSelecionado] = useState('dias_uteis'); // Valor padrão
+  const [diaSelecionado, setDiaSelecionado] = useState('dias_uteis');
   const [partidaSelecionada, setPartidaSelecionada] = useState(null);
   const [pontosPartida, setPontosPartida] = useState([]);
   const [dataHoraAtual, setDataHoraAtual] = useState(new Date());
+  const [termoBusca, setTermoBusca] = useState('');
+  const [hoveredLinha, setHoveredLinha] = useState(null);
 
   useEffect(() => {
     // Determinar o dia da semana atual (0 = Domingo, 1 = Segunda, ..., 6 = Sábado)
@@ -54,6 +59,25 @@ const LinhaDetalhes = () => {
     }, 600);
   }, [id]);
 
+  // Obter todas as linhas para a busca
+  const todasLinhas = Object.entries(horariosData.linhas).map(([id, data]) => ({
+    id,
+    nome: data.nome
+  }));
+
+  // Filtrar linhas baseado no termo de busca
+  const linhasFiltradas = todasLinhas.filter(linha => {
+    const busca = termoBusca.toLowerCase();
+    return (
+      linha.id.toLowerCase().includes(busca) || 
+      linha.nome.toLowerCase().includes(busca)
+    );
+  });
+
+  const handleBuscaChange = (e) => {
+    setTermoBusca(e.target.value);
+  };
+
   const handleDiaClick = (dia) => {
     setDiaSelecionado(dia);
   };
@@ -69,6 +93,15 @@ const LinhaDetalhes = () => {
       default: return 'Domingos e Feriados';
     }
   };
+
+  const handleLinhaClick = (linhaId) => {
+  setLoading(true);
+  setTermoBusca(''); // limpa o campo de busca
+
+  setTimeout(() => {
+    navigate(`/${linhaId}`);
+  }, 600);
+};
 
   const [mostrarTabela, setMostrarTabela] = useState(false);
 
@@ -115,28 +148,61 @@ const toggleNavegacao = () => {
       <section id="horarios" className="horarios">
         <h2>Horários das Linhas</h2>
 
-        <div className="search-container">
-          <input type="text" id="search" className="search-bar" placeholder="Pesquisar por número ou nome..." />
+         <div className="search-container">
+          <input
+            type="text"
+            id="search"
+            className="search-bar"
+            placeholder="Pesquisar por número ou nome..."
+            value={termoBusca}
+            onChange={handleBuscaChange}
+          />
           <button className="search-button">
             <img src="https://img.icons8.com/ios-filled/50/000000/search.png" alt="Ícone de lupa" />
           </button>
         </div>
 
-        <div className="linha-container">
-          <div className='special-buttons'>
-            <a href="/" className="linha-button" title="Página Inicial"><FaHome /></a>
-            <a 
-              href={linha?.link_pdf || "#"} 
-              className="linha-button" 
-              title="Baixar em PDF"
-              download // Esta propriedade força o download
-            >
-            <FaFilePdf />
-            </a>
-            <a href="/" className="linha-button" title="Itinerário"><FaBus /></a>
+        {/* Mostrar resultados da busca apenas quando há termo de busca */}
+        {termoBusca && (
+          <div className="linha-container">
+            {linhasFiltradas.length > 0 ? (
+              linhasFiltradas.map((linha) => (
+                <button
+                  key={linha.id}
+                  className={`linha-clickable ${hoveredLinha && hoveredLinha !== linha.id ? 'darker' : ''}`}
+                  onClick={() => handleLinhaClick(linha.id)}
+                  onMouseEnter={() => setHoveredLinha(linha.id)}
+                  onMouseLeave={() => setHoveredLinha(null)}
+                >
+                Horário {linha.id} - {linha.nome}
+                </button>
+                ))
+              ) : (
+              <div className="nenhum-resultado">
+                <p>Nenhuma linha encontrada para "{termoBusca}"</p>
+              </div>
+            )}
           </div>
-          <button className="linha-selected">Horário {id} - {linha.nome}</button>
-        </div>
+        )}
+
+        {/* Mostrar a linha atual e botões especiais quando não há busca */}
+        {!termoBusca && (
+          <div className="linha-container">
+            <button className="linha-selected">Horário {id} - {linha.nome}</button>
+              <div className='special-buttons'>
+                <a href="/" className="linha-button" title="Página Inicial"><FaHome /></a>
+                <a 
+                  href={linha?.link_pdf || "#"} 
+                  className="linha-button" 
+                  title="Baixar em PDF"
+                  download
+                >
+                <FaFilePdf />
+                </a>
+                <a href="/" className="linha-button" title="Itinerário"><FaBus /></a>
+                </div>
+              </div>
+          )}
       </section>
 
       <section id="selecionar-horario" className="selecionar-horario">
@@ -187,7 +253,7 @@ const toggleNavegacao = () => {
             <div className="tabela">
               <h3 id='header-horarios'>{getDiaHorario()} - {partidaSelecionada}</h3>
               <table><tbody><tr><td>Não há horários disponíveis</td></tr></tbody></table>
-            </div>
+          </div>
           ) : semCirculacao ? (
             <div className="tabela">
               <h3>{getDiaHorario()} - {partidaSelecionada}</h3>
@@ -203,34 +269,32 @@ const toggleNavegacao = () => {
                     <th>Horário</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <td rowSpan={horarios.length}>{partidaSelecionada}</td>
-                    <td>{horarios[0]}</td>
+                  <tbody>
+                    {horarios.map((horario, index) => (
+                  <tr key={index}>
+                    <td>{partidaSelecionada}</td>
+                    <td>{horario}</td>
                   </tr>
-                  {horarios.slice(1).map((horario, index) => (
-                    <tr key={index}>
-                      <td>{horario}</td>
-                    </tr>
                   ))}
-                </tbody>
-              </table>
-            </div>
+                  </tbody>
+               </table>
+          </div>
           )}
         </div>
-      </section>
-      <button 
-  className="botao-navegacao-flutuante"
-  onClick={toggleNavegacao}
-  title={mostrarTabela ? "Voltar para os filtros" : "Ir para a tabela"}
->
-  {mostrarTabela ? (
-    <FaArrowUp /> // Ícone para subir
-  ) : (
-    <FaArrowDown /> // Ícone para descer
-  )}
-</button>
 
+      </section>
+
+      <button 
+          className="botao-navegacao-flutuante"
+          onClick={toggleNavegacao}
+          title={mostrarTabela ? "Voltar para os filtros" : "Ir para a tabela"}
+        >
+        {mostrarTabela ? (
+        <FaArrowUp /> // Ícone para subir
+        ) : (
+        <FaArrowDown /> // Ícone para descer
+      )}
+      </button>
     </div>
   );
 };

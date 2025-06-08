@@ -62,7 +62,15 @@ const Linhas = () => {
           ))
         ) : (
           <div className="nenhum-resultado">
-            Nenhuma linha encontrada para "{termoBusca}"
+            <p>Nenhuma linha encontrada para "{termoBusca}"</p>
+           <img src="./img/ponto_onibus.jpg" alt="Ponto de ônibus" />
+            <a
+             href="https://br.freepik.com/vetores-gratis/pessoas-esperando-o-transporte-publico-no-ponto-de-onibus-banco-leitura-ilustracao-em-vetor-plana-paisagem-urbana-transporte-e-conceito-de-estilo-de-vida-urbano_10613348.htm"
+             target="_blank"
+             rel="noopener noreferrer"
+            >
+            Imagem de pch.vector no Freepik
+            </a>
           </div>
         )}
       </div>

@@ -100,3 +100,24 @@
     transform: scale(1.05) !important;
     z-index: 2;
 }
+
+.nenhum-resultado {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.nenhum-resultado img {
+    width: 390px;
+    height: auto;
+    border-radius: 15px;
+}
+
+.nenhum-resultado a {
+    text-decoration: none;
+    color: #333;
+    font-size: 8px;
+    margin-top: 8px;
+    font-weight: 400;
+}
