@@ -6,7 +6,7 @@ import Header from './main/components/Header';
 import Banner from './main/components/Banner';
 import Hero from './main/components/Hero';
 import Footer from './main/components/Footer';
-import LinhaDetalhes from './linhas/LinhaDetalhes';
+import LinhaDetalhes from './linhas/horarios/LinhaDetalhes';
 
 function App() {
   return (

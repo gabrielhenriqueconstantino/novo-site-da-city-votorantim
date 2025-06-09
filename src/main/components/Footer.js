@@ -1,5 +1,6 @@
 // src/components/Footer.js
 import React from 'react';
+import { FaLock } from 'react-icons/fa';
 import '../styles/Footer.css';
 
 const Footer = () => {
@@ -41,6 +42,7 @@ const Footer = () => {
           </a>{' '}
           – Todos Direitos Reservados.
         </p>
+        <a href='/'><FaLock /></a>
       </div>
     </footer>
   );

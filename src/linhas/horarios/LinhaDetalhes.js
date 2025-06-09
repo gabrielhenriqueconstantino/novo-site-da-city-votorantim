@@ -1,10 +1,8 @@
 import React, { useState, useEffect} from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { FaClock, FaArrowsAltH, FaMapMarkerAlt, FaCalendarAlt, FaHome, FaFilePdf, FaBus, FaArrowDown, FaArrowUp } from 'react-icons/fa';
-import horariosData from '../data/horarios.json';
+import horariosData from '../../data/horarios.json';
 import './LinhaDetalhes.css';
-
-
 
 const LinhaDetalhes = () => {
   const { id } = useParams();
