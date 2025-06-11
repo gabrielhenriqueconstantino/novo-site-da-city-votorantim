@@ -116,11 +116,11 @@ const Header = ({ setShowItinerarios }) => {
             </li>
             <li>
               <NavLink 
-                to="/" 
+                to="/itinerarios" 
                 onClick={handleItinerariosClick}
                 className={({ isActive }) => `mobile-nav-item ${isActive ? 'active' : ''}`}
               >
-                ITINERÁRIOS
+              ITINERÁRIOS
               </NavLink>
             </li>
             <li>
