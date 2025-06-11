@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useParams, useSearchParams, useNavigate } from "react-router-dom";
-import { FaHome, FaFilePdf, FaBus, FaArrowDown, FaArrowUp } from 'react-icons/fa';
+import { FaHome, FaFilePdf, FaClock, FaArrowDown, FaArrowUp } from 'react-icons/fa';
 import "./ItinerarioDetalhes.css";
 import "../horarios/LinhaDetalhes.css"
 import itinerarios from "../../data/itinerarios.json";
@@ -82,7 +82,7 @@ const Itinerarios = () => {
 
   return (
     <div>
-      <section id="itinerario" className="itinerario">
+      <section id="itinerario" className="horarios">
         <h2>Itinerários das Linhas</h2>
 
         <div className="search-container">
@@ -136,7 +136,7 @@ const Itinerarios = () => {
               >
                 <FaFilePdf />
               </a>
-              <a href={`/${linhaId}`} className="linha-button" title="Horários"><FaBus /></a>
+              <a href={`/${linhaId}`} className="linha-button" title="Horários"><FaClock /></a>
             </div>
           </div>
         )}

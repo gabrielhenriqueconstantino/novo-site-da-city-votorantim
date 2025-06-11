@@ -1,8 +1,11 @@
 /* Itinerarios.css */
-.paradas-container {
-  max-width: 600px;
+.paradas-list {
+  max-width: 800px;
   margin: 0 auto;
   padding: 20px;
+  border: 2px solid #3a44d1;
+  border-radius: 14px;
+  margin-bottom: 25px;
 }
 
 .linha-titulo {
@@ -22,6 +25,8 @@
   align-items: center;
   margin-bottom: 20px;
   position: relative;
+  background-color: aliceblue;
+  border-radius: 16px;
 }
 
 .parada-marker {
@@ -33,22 +38,22 @@
   margin-right: 15px;
   flex-shrink: 0;
   position: absolute;
-  left: -31px;
+  left: -37px;
 }
 
 .parada-marker.inicial {
-  width: 24px;
-  height: 24px;
-  left: -35px;
-  background-color: #3a44d1;
+  width: 28px;
+  height: 28px;
+  left: -44px;
+  background-color: aliceblue;
   border: 4px solid #3a44d1;
 }
 
 .parada-marker.final {
-  width: 24px;
-  height: 24px;
-  left: -35px;
-  background-color: white;
+  width: 28px;
+  height: 28px;
+  left: -44px;
+  background-color: aliceblue;
   border: 4px solid #3a44d1;
 }
 
@@ -59,6 +64,7 @@
   flex-grow: 1;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   position: relative;
+  font-family: 'Poppins', sans-serif;
 }
 
 .ponto-tag {
@@ -74,30 +80,123 @@
   font-weight: bold;
 }
 
-.direcao-buttons {
+.direcao-container {
   display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
   justify-content: center;
-  margin-bottom: 1rem;
-  gap: 1rem;
 }
 
-.direcao-buttons button {
-  padding: 0.5rem 1rem;
-  font-weight: bold;
-  border: 2px solid #333;
-  border-radius: 8px;
-  background-color: #fff;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-}
-
-.direcao-buttons button:hover {
+.btn-direcao {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 25px;
   background-color: #f0f0f0;
+  color: #333;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  font-size: 0.9rem;
+  min-width: 150px;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
 }
 
-.direcao-buttons button.active {
-  background-color: #ffc107;
-  border-color: #ffc107;
-  color: #000;
+.btn-direcao:hover {
+  background-color: #e0e0e0;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
+.btn-direcao.active {
+  background-color: #3a44d1;
+  color: white;
+  box-shadow: 0 4px 8px rgba(58, 68, 209, 0.3);
+}
+
+.btn-direcao.active:hover {
+  background-color: #2a34c1;
+}
+
+/* Versão Mobile - Adicione com media query */
+@media (max-width: 768px) {
+  .paradas-list {
+    padding: 15px 10px 15px 25px;
+    margin: 0 10px 20px;
+    border-left-width: 3px;
+    border-radius: 16px;
+    background-color: #f8f9fa;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .parada-item {
+    margin-bottom: 15px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    padding: 5px 0;
+  }
+
+  .parada-marker {
+    width: 14px;
+    height: 14px;
+    left: -35px;
+    border-width: 2px;
+  }
+
+  .parada-marker.inicial,
+  .parada-marker.final {
+    width: 22px;
+    height: 22px;
+    left: -38px;
+    background-color: white;
+  }
+
+  .parada-nome {
+    padding: 12px 15px;
+    background: transparent;
+    box-shadow: none;
+    font-size: 0.9rem;
+  }
+
+  .ponto-tag {
+    position: relative;
+    right: auto;
+    top: auto;
+    transform: none;
+    display: inline-block;
+    margin-left: 10px;
+    padding: 2px 6px;
+    font-size: 0.7rem;
+  }
+
+  /* Ajustes para os botões de direção no mobile */
+  .direcao-container {
+    flex-direction: column;
+    gap: 8px;
+    padding: 0 10px;
+  }
+
+  .btn-direcao {
+    min-width: 100%;
+    padding: 12px 15px;
+    border-radius: 12px;
+  }
+}
+
+/* Melhorias adicionais para telas muito pequenas */
+@media (max-width: 480px) {
+  .parada-nome {
+    padding: 10px 12px;
+    font-size: 0.85rem;
+  }
+
+  .ponto-tag {
+    display: block;
+    margin-left: 0;
+    margin-top: 5px;
+    width: fit-content;
+  }
+}

@@ -29,7 +29,7 @@ const Hero = ({ showItinerarios }) => {
 
   if (showItinerarios) {
   return (
-    <section id="itinerarios" className="itinerarios">
+    <section id="itinerarios" className="horarios">
       <h2>Itinerários das Linhas</h2>
 
       <div className="search-container">
