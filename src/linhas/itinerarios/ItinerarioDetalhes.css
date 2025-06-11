@@ -1,0 +1,103 @@
+/* Itinerarios.css */
+.paradas-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.linha-titulo {
+  color: #3a44d1;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.paradas-list {
+  border-left: 2px solid #3a44d1;
+  padding-left: 25px;
+  position: relative;
+}
+
+.parada-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.parada-marker {
+  width: 16px;
+  height: 16px;
+  border: 3px solid #3a44d1;
+  border-radius: 50%;
+  background-color: white;
+  margin-right: 15px;
+  flex-shrink: 0;
+  position: absolute;
+  left: -31px;
+}
+
+.parada-marker.inicial {
+  width: 24px;
+  height: 24px;
+  left: -35px;
+  background-color: #3a44d1;
+  border: 4px solid #3a44d1;
+}
+
+.parada-marker.final {
+  width: 24px;
+  height: 24px;
+  left: -35px;
+  background-color: white;
+  border: 4px solid #3a44d1;
+}
+
+.parada-nome {
+  padding: 10px 15px;
+  background: #f8f9fa;
+  border-radius: 6px;
+  flex-grow: 1;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  position: relative;
+}
+
+.ponto-tag {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #3a44d1;
+  color: white;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+.direcao-buttons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+  gap: 1rem;
+}
+
+.direcao-buttons button {
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  border: 2px solid #333;
+  border-radius: 8px;
+  background-color: #fff;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.direcao-buttons button:hover {
+  background-color: #f0f0f0;
+}
+
+.direcao-buttons button.active {
+  background-color: #ffc107;
+  border-color: #ffc107;
+  color: #000;
+}
+

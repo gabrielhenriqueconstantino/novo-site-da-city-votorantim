@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import '../styles/Header.css';
 
-const Header = () => {
+const Header = ({ setShowItinerarios }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -12,6 +12,16 @@ const Header = () => {
 
   const closeMenu = () => {
     setMenuOpen(false);
+  };
+
+  const handleItinerariosClick = () => {
+    setShowItinerarios(true);
+    closeMenu();
+  };
+
+  const handleHorariosClick = () => {
+    setShowItinerarios(false);
+    closeMenu();
   };
 
   useEffect(() => {
@@ -28,7 +38,7 @@ const Header = () => {
       <div className="header-container">
         <nav className="nav">
           <div className="logo-container">
-            <Link to="/" onClick={closeMenu}>
+            <Link to="/" onClick={handleHorariosClick}>
               <img 
                 src="http://votorantim.citymais.com.br/wp-content/uploads/2020/07/logo-city3.png" 
                 alt="Logo da CITY+" 
@@ -40,26 +50,29 @@ const Header = () => {
           {/* Menu desktop */}
           <ul className="nav-links">
             <li>
-              <NavLink 
-                to="/" 
-                end 
-                className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
-              >
-                HORÁRIOS
-              </NavLink>
-            </li>
+    <NavLink 
+      to="/" 
+      end 
+      className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
+      onClick={handleHorariosClick}
+    >
+      HORÁRIOS
+    </NavLink>
+  </li>
             <li>
-              <NavLink 
-                to="/projects" 
-                className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
-              >
-                ITINERÁRIOS
-              </NavLink>
-            </li>
+    <NavLink 
+      to="/itinerarios" 
+      className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
+      onClick={handleItinerariosClick}
+    >
+      ITINERÁRIOS
+    </NavLink>
+  </li>
             <li>
               <NavLink 
                 to="/blog" 
                 className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
+                onClick={closeMenu}
               >
                 CADASTRO
               </NavLink>
@@ -68,6 +81,7 @@ const Header = () => {
               <NavLink 
                 to="/contact" 
                 className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
+                onClick={closeMenu}
               >
                 FALE CONOSCO
               </NavLink>
@@ -94,7 +108,7 @@ const Header = () => {
               <NavLink 
                 to="/" 
                 end 
-                onClick={closeMenu}
+                onClick={handleHorariosClick}
                 className={({ isActive }) => `mobile-nav-item ${isActive ? 'active' : ''}`}
               >
                 HORÁRIOS
@@ -102,8 +116,8 @@ const Header = () => {
             </li>
             <li>
               <NavLink 
-                to="/projects" 
-                onClick={closeMenu}
+                to="/" 
+                onClick={handleItinerariosClick}
                 className={({ isActive }) => `mobile-nav-item ${isActive ? 'active' : ''}`}
               >
                 ITINERÁRIOS
