@@ -328,24 +328,8 @@ table tr:nth-child(even) {
   pointer-events: none;
 }
 
-.linha-clickable {
-    background-color: #004AAD;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 20px;
-    text-decoration: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 16px;
-    text-align: center;
-    transition: all 0.3s ease;
-    transform: scale(0.9);
-    position: relative;
-    z-index: 1;
-    cursor: pointer;
+.linha {
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
-    border: 2px solid aliceblue;
 }
 

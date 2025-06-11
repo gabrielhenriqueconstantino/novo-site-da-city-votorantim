@@ -2,8 +2,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/Hero.css';
+import '../styles/global.css';
 import horariosData from '../../data/horarios.json';
 import ItinerarioDetalhes from '../../linhas/itinerarios/ItinerarioDetalhes';
+import { FaSearch } from 'react-icons/fa';
 
 const Hero = ({ showItinerarios }) => {
   const [termoBusca, setTermoBusca] = useState('');
@@ -32,7 +34,8 @@ const Hero = ({ showItinerarios }) => {
     <section id="itinerarios" className="horarios">
       <h2>Itinerários das Linhas</h2>
 
-      <div className="search-container">
+      <div className="search-container" style={{ display: 'flex', alignItems: 'center' }}>
+        <FaSearch className='lupa' style={{ marginRight: '-28px', zIndex: '1001' }} />
         <input
           type="text"
           id="search"
@@ -41,12 +44,6 @@ const Hero = ({ showItinerarios }) => {
           value={termoBusca}
           onChange={handleBuscaChange}
         />
-        <button className="search-button">
-          <img
-            src="https://img.icons8.com/ios-filled/50/000000/search.png"
-            alt="Ícone de lupa"
-          />
-        </button>
       </div>
 
       <div className="linha-container">
@@ -85,7 +82,8 @@ const Hero = ({ showItinerarios }) => {
     <section id="horarios" className="horarios">
       <h2>Horários das Linhas</h2>
 
-      <div className="search-container">
+      <div className="search-container" style={{ display: 'flex', alignItems: 'center' }}>
+        <FaSearch className='lupa' style={{ marginRight: '-28px', zIndex: '1001' }} />
         <input
           type="text"
           id="search"
@@ -94,12 +92,6 @@ const Hero = ({ showItinerarios }) => {
           value={termoBusca}
           onChange={handleBuscaChange}
         />
-        <button className="search-button">
-          <img
-            src="https://img.icons8.com/ios-filled/50/000000/search.png"
-            alt="Ícone de lupa"
-          />
-        </button>
       </div>
 
       <div className="linha-container">
@@ -112,7 +104,7 @@ const Hero = ({ showItinerarios }) => {
               onMouseEnter={() => setHoveredLinha(linha.id)}
               onMouseLeave={() => setHoveredLinha(null)}
             >
-            Horário {linha.id} - {linha.nome}
+              Horário {linha.id} - {linha.nome}
             </Link>
           ))
         ) : (

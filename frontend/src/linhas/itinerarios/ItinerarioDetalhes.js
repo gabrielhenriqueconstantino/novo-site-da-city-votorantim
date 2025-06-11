@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, useSearchParams, useNavigate } from "react-router-dom";
-import { FaHome, FaFilePdf, FaClock, FaArrowDown, FaArrowUp } from 'react-icons/fa';
+import { FaHome, FaFilePdf, FaClock, FaArrowDown, FaArrowUp, FaSearch } from 'react-icons/fa';
 import "./ItinerarioDetalhes.css";
 import "../horarios/LinhaDetalhes.css";
 import itinerarios from "../../data/itinerarios.json";
 import horariosData from "../../data/horarios.json";
+
 
 const Itinerarios = () => {
   const { linhaId } = useParams();
@@ -14,8 +15,16 @@ const Itinerarios = () => {
   const [hoveredLinha, setHoveredLinha] = useState(null);
   const [mostrarTabela, setMostrarTabela] = useState(false);
   const [animationClass, setAnimationClass] = useState('fade-in');
+  const [loading, setLoading] = useState(true);
+  const [clickedButton, setClickedButton] = useState(null);
 
   const direcao = searchParams.get("direcao") || "BAIRRO";
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 600);
+  }, [linhaId]);
 
   const linha = itinerarios.linhas[linhaId];
   const linhaHorario = horariosData.linhas[linhaId];
@@ -40,11 +49,22 @@ const Itinerarios = () => {
   };
 
   const handleLinhaClick = (linhaId) => {
+    setLoading(true);
+    setTermoBusca('');
     setAnimationClass('fade-out');
     setTimeout(() => {
       navigate(`/itinerarios/${linhaId}`);
       setAnimationClass('fade-in');
-    }, 500);
+    }, 600);
+  };
+
+  const handleButtonClick = (buttonType) => {
+    setClickedButton(buttonType);
+    setTermoBusca('');
+    
+    setTimeout(() => {
+      setClickedButton(null);
+    }, 300);
   };
 
   const scrollTo = (id) => {
@@ -72,6 +92,15 @@ const Itinerarios = () => {
     }, 100);
   };
 
+  if (loading) {
+    return (
+      <div className="loading-container">
+        <div className="loading-spinner"></div>
+        <p>Carregando...</p>
+      </div>
+    );
+  }
+
   if (!linha) {
     return <div>Linha não encontrada</div>;
   }
@@ -93,19 +122,18 @@ const Itinerarios = () => {
       <section id="itinerario" className="horarios">
         <h2>Itinerários das Linhas</h2>
 
-        <div className="search-container">
-          <input
-            type="text"
-            id="search"
-            className="search-bar"
-            placeholder="Pesquisar por número ou nome..."
-            value={termoBusca}
-            onChange={handleBuscaChange}
-          />
-          <button className="search-button">
-            <img src="https://img.icons8.com/ios-filled/50/000000/search.png" alt="Ícone de lupa" />
-          </button>
-        </div>
+        <div className="search-container" style={{ display: 'flex', alignItems: 'center' }}>
+                <FaSearch className='lupa' style={{ marginRight: '-28px', zIndex: '1001' }} />
+                <input
+                  type="text"
+                  id="search"
+                  className="search-bar"
+                  placeholder="Pesquisar por número ou nome..."
+                  value={termoBusca}
+                  onChange={handleBuscaChange}
+                />
+              </div>
+        
 
         {termoBusca && (
           <div className="linha-container">
@@ -113,7 +141,7 @@ const Itinerarios = () => {
               linhasFiltradas.map((linha) => (
                 <button
                   key={linha.id}
-                  className={`linha-clickable ${hoveredLinha && hoveredLinha !== linha.id ? 'darker' : ''}`}
+                  className={`linha ${hoveredLinha && hoveredLinha !== linha.id ? 'darker' : ''}`}
                   onClick={() => handleLinhaClick(linha.id)}
                   onMouseEnter={() => setHoveredLinha(linha.id)}
                   onMouseLeave={() => setHoveredLinha(null)}
@@ -133,16 +161,31 @@ const Itinerarios = () => {
           <div className="linha-container">
             <button className="linha-selected">Itinerário {linhaId} - {linha.nome}</button>
             <div className='special-buttons'>
-              <a href="/" className="linha-button" title="Página Inicial"><FaHome /></a>
+              <a 
+                href="/" 
+                className={`linha-button ${clickedButton === 'home' ? 'button-clicked' : ''}`} 
+                title="Página Inicial"
+                onClick={() => handleButtonClick('home')}
+              >
+                <FaHome />
+              </a>
               <a 
                 href={linhaHorario?.link_pdf || "#"} 
-                className="linha-button" 
+                className={`linha-button ${clickedButton === 'pdf' ? 'button-clicked' : ''}`} 
                 title="Baixar em PDF"
                 download
+                onClick={() => handleButtonClick('pdf')}
               >
                 <FaFilePdf />
               </a>
-              <a href={`/${linhaId}`} className="linha-button" title="Horários"><FaClock /></a>
+              <a 
+                href={`/horarios/${linhaId}`} 
+                className={`linha-button ${clickedButton === 'horarios' ? 'button-clicked' : ''}`} 
+                title="Horários"
+                onClick={() => handleButtonClick('horarios')}
+              >
+                <FaClock />
+              </a>
             </div>
           </div>
         )}

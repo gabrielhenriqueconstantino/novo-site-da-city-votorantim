@@ -1,6 +1,6 @@
 import React, { useState, useEffect} from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { FaClock, FaArrowsAltH, FaMapMarkerAlt, FaCalendarAlt, FaHome, FaFilePdf, FaBus, FaArrowDown, FaArrowUp } from 'react-icons/fa';
+import { FaClock, FaArrowsAltH, FaMapMarkerAlt, FaCalendarAlt, FaHome, FaFilePdf, FaBus, FaArrowDown, FaArrowUp, FaSearch } from 'react-icons/fa';
 import horariosData from '../../data/horarios.json';
 import './LinhaDetalhes.css';
 
@@ -146,19 +146,17 @@ const toggleNavegacao = () => {
       <section id="horarios" className="horarios">
         <h2>Horários das Linhas</h2>
 
-         <div className="search-container">
-          <input
-            type="text"
-            id="search"
-            className="search-bar"
-            placeholder="Pesquisar por número ou nome..."
-            value={termoBusca}
-            onChange={handleBuscaChange}
-          />
-          <button className="search-button">
-            <img src="https://img.icons8.com/ios-filled/50/000000/search.png" alt="Ícone de lupa" />
-          </button>
-        </div>
+         <div className="search-container" style={{ display: 'flex', alignItems: 'center' }}>
+                 <FaSearch className='lupa' style={{ marginRight: '-28px', zIndex: '1001' }} />
+                 <input
+                   type="text"
+                   id="search"
+                   className="search-bar"
+                   placeholder="Pesquisar por número ou nome..."
+                   value={termoBusca}
+                   onChange={handleBuscaChange}
+                 />
+               </div>
 
         {/* Mostrar resultados da busca apenas quando há termo de busca */}
         {termoBusca && (
@@ -167,7 +165,7 @@ const toggleNavegacao = () => {
               linhasFiltradas.map((linha) => (
                 <button
                   key={linha.id}
-                  className={`linha-clickable ${hoveredLinha && hoveredLinha !== linha.id ? 'darker' : ''}`}
+                  className={`linha ${hoveredLinha && hoveredLinha !== linha.id ? 'darker' : ''}`}
                   onClick={() => handleLinhaClick(linha.id)}
                   onMouseEnter={() => setHoveredLinha(linha.id)}
                   onMouseLeave={() => setHoveredLinha(null)}

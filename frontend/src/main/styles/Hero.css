@@ -13,35 +13,27 @@
 
 .search-bar {
     width: 100%;
-    max-width: 100%; /* Limite de largura da barra de pesquisa */
-    padding: 10px;
-    font-size: 15px;
-    border-radius: 20px; /* Bordas arredondadas */
-    border: 1px solid #333; /* Cor da borda */
-    outline: none; /* Remove a borda padrão do foco */
-    padding-left: 50px; /* Aumentado para criar mais espaço entre o texto e a lupa */
-    font-style: italic;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    color: #333;
-}
-
-.search-button {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    position: absolute;
-    padding: 10px;
-    padding-top: 13px;
-    left: 20px;
+    padding: 12px 20px 12px 45px;
+    font-size: 16px;
+    border-radius: 30px;
+    border: 2px solid #004AAD;
+    outline: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .search-bar:focus {
-    border-color: #004AAD; /* Cor de destaque ao focar no campo de pesquisa */
+    border-color: #0066e6;
+    box-shadow: 0 4px 8px rgba(0, 74, 173, 0.2);
 }
 
-.search-button img {
-    width: 20px;
-    height: 20px;
+
+.search-bar:focus + .search-button img {
+    opacity: 1;
+}
+
+.search-bar:focus + .search-button img {
+    opacity: 1;
 }
 
 .linha-container {
@@ -57,49 +49,67 @@
 .linha {
     background-color: #004AAD;
     color: white;
-    padding: 10px 20px;
-    border-radius: 8px;
+    padding: 15px 25px;
+    border-radius: 12px;
     text-decoration: none;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 16px;
     text-align: center;
-    transition: all 0.3s ease;
-    transform: scale(0.9);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 74, 173, 0.3);
+    border: none;
+    cursor: pointer;
+    min-height: 60px;
     z-index: 1;
 }
 
-/* Camada de escurecimento - sempre presente mas transparente */
-.linha::after {
+/* Efeito de brilho ao passar o mouse */
+.linha::before {
     content: '';
     position: absolute;
     top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0);
-    border-radius: 8px;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transition: 0.5s;
     z-index: -1;
-    transition: background-color 0.4s ease;
 }
 
-/* Estado quando não está em hover (darker) */
-.linha-container:not(:hover) .linha,
-.linha-container:hover .linha:not(:hover) {
-    transform: scale(0.9);
-}
-
-.linha-container:hover .linha:not(:hover)::after {
-    background-color: rgba(0, 0, 0, 0.7);
-}
-
-/* Estado de hover */
+/* Efeito de hover - Gradiente fixo para todos os botões */
 .linha:hover {
-    transform: scale(1.05) !important;
-    z-index: 2;
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 16px rgba(0, 74, 173, 0.4);
+    background: linear-gradient(135deg, #004AAD, #2193b0);
 }
+
+.linha:hover::before {
+    left: 100%;
+}
+
+/* Efeito de clique */
+.linha:active {
+    transform: translateY(1px) scale(0.98);
+    box-shadow: 0 2px 4px rgba(0, 74, 173, 0.4);
+}
+
+/* Efeito de escurecimento para linhas não selecionadas */
+.linha-container:hover .linha:not(:hover) {
+    filter: brightness(0.7);
+    transform: scale(0.95);
+}
+
+/* Removidas as variações de gradiente aleatório */
+/* Mantido apenas o efeito de hover único para todos os botões */
 
 .nenhum-resultado {
     display: flex;
@@ -120,4 +130,65 @@
     font-size: 8px;
     margin-top: 8px;
     font-weight: 400;
+}
+
+/* Media Queries para mobile */
+@media (max-width: 768px) {
+    .horarios {
+        padding: 10px;
+    }
+    
+    .search-container {
+        margin: 10px 0;
+        padding: 0 10px;
+    }
+    
+    .search-bar {
+        padding: 10px 15px 10px 40px;
+        font-size: 14px;
+    }
+    
+    .linha-container {
+        grid-template-columns: 1fr;
+        gap: 8px;
+        padding: 10px;
+    }
+    
+    .linha {
+        padding: 12px;
+        font-size: 14px;
+        min-height: 45px;
+        border-radius: 8px;
+    }
+    
+    /* Ajuste para touch devices */
+    .linha:hover {
+        transform: none;
+        box-shadow: 0 4px 8px rgba(0, 74, 173, 0.4);
+    }
+    
+    .linha:active {
+        transform: scale(0.98);
+    }
+    
+    .nenhum-resultado img {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .linha {
+        font-size: 13px;
+        padding: 10px;
+    }
+    
+    .search-bar {
+        font-size: 13px;
+        padding-left: 35px;
+    }
+    
+    .search-button {
+        left: 15px;
+    }
 }
