@@ -1,8 +1,7 @@
-/* eslint-disable no-unused-vars */
 import { useState } from 'react';
 import './main/styles/global.css';
 import './main/styles/App.css';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 
 import Header from './main/components/Header';
 import Banner from './main/components/Banner';
@@ -13,26 +12,25 @@ import Itinerarios from './linhas/itinerarios/ItinerarioDetalhes';
 
 function App() {
   const location = useLocation();
-
-  // Define se estamos na rota de itinerários
-  const isItinerariosRoute = location.pathname.startsWith('/itinerarios');
+  const [showItinerarios, setShowItinerarios] = useState(false);
 
   return (
     <div className="App">
-      <Header setShowItinerarios={() => {}} />
+      <Header setShowItinerarios={setShowItinerarios} />
       <Banner />
       <Routes>
+        <Route path="/" element={<Navigate to="/horarios" replace />} />
         <Route
-          path="/"
+          path="/horarios"
           element={<Hero showItinerarios={false} />}
+        />
+        <Route
+          path="/horarios/:id"
+          element={<LinhaDetalhes />}
         />
         <Route
           path="/itinerarios"
           element={<Hero showItinerarios={true} />}
-        />
-        <Route
-          path="/:id"
-          element={<LinhaDetalhes />}
         />
         <Route
           path="/itinerarios/:linhaId"

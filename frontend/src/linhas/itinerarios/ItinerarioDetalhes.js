@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useParams, useSearchParams, useNavigate } from "react-router-dom";
 import { FaHome, FaFilePdf, FaClock, FaArrowDown, FaArrowUp } from 'react-icons/fa';
 import "./ItinerarioDetalhes.css";
-import "../horarios/LinhaDetalhes.css"
+import "../horarios/LinhaDetalhes.css";
 import itinerarios from "../../data/itinerarios.json";
 import horariosData from "../../data/horarios.json";
 
@@ -13,6 +13,7 @@ const Itinerarios = () => {
   const [termoBusca, setTermoBusca] = useState('');
   const [hoveredLinha, setHoveredLinha] = useState(null);
   const [mostrarTabela, setMostrarTabela] = useState(false);
+  const [animationClass, setAnimationClass] = useState('fade-in');
 
   const direcao = searchParams.get("direcao") || "BAIRRO";
 
@@ -39,8 +40,11 @@ const Itinerarios = () => {
   };
 
   const handleLinhaClick = (linhaId) => {
-    setTermoBusca(''); // limpa o campo de busca
-    navigate(`/itinerarios/${linhaId}`);
+    setAnimationClass('fade-out');
+    setTimeout(() => {
+      navigate(`/itinerarios/${linhaId}`);
+      setAnimationClass('fade-in');
+    }, 500);
   };
 
   const scrollTo = (id) => {
@@ -60,13 +64,17 @@ const Itinerarios = () => {
     setMostrarTabela(!mostrarTabela);
   };
 
+  const handleDirecaoClick = (novaDirecao) => {
+    setAnimationClass('fade-out');
+    setTimeout(() => {
+      navigate(`/itinerarios/${linhaId}?direcao=${novaDirecao}`);
+      setAnimationClass('fade-in');
+    }, 100);
+  };
+
   if (!linha) {
     return <div>Linha não encontrada</div>;
   }
-
-  const handleDirecaoClick = (novaDirecao) => {
-    navigate(`/itinerarios/${linhaId}?direcao=${novaDirecao}`);
-  };
 
   const paradas = linha.partindo_de[direcao] || {};
   const paradasArray = Object.entries(paradas)
@@ -81,7 +89,7 @@ const Itinerarios = () => {
     });
 
   return (
-    <div>
+    <div className={`itinerario-container ${animationClass}`}>
       <section id="itinerario" className="horarios">
         <h2>Itinerários das Linhas</h2>
 
@@ -99,7 +107,6 @@ const Itinerarios = () => {
           </button>
         </div>
 
-        {/* Mostrar resultados da busca apenas quando há termo de busca */}
         {termoBusca && (
           <div className="linha-container">
             {linhasFiltradas.length > 0 ? (
@@ -122,7 +129,6 @@ const Itinerarios = () => {
           </div>
         )}
 
-        {/* Mostrar a linha atual e botões especiais quando não há busca */}
         {!termoBusca && (
           <div className="linha-container">
             <button className="linha-selected">Itinerário {linhaId} - {linha.nome}</button>
@@ -145,38 +151,48 @@ const Itinerarios = () => {
       <section id="itinerario-tabela" className="itinerario-tabela">
         <div className="direcao-container">
           {Object.keys(linha.partindo_de).map((direcaoKey) => {
-        let label = "";
+            let label = "";
+      
+            if (linhaId === "3103" || linhaId === "3128") {
+              if (direcaoKey === "BAIRRO") {
+                label = "Bairro → Shopping";
+              } else if (direcaoKey === "SHOPPING") {
+                label = "Shopping → Bairro";
+              } else {
+                label = direcaoKey;
+              }
+            } else {
+              switch (direcaoKey) {
+                case "BAIRRO":
+                  label = "Bairro → Centro";
+                  break;
+                case "CENTRO":
+                  label = "Centro → Bairro";
+                  break;
+                case "SHOPPING":
+                  label = "Bairro → Shopping";
+                  break;
+                case "SHOPPING_RETORNO":
+                  label = "Shopping → Bairro";
+                  break;
+                default:
+                  label = direcaoKey;
+              }
+            }
 
-        switch (direcaoKey) {
-          case "BAIRRO":
-            label = "Bairro → Centro";
-          break;
-        case "CENTRO":
-          label = "Centro → Bairro";
-          break;
-        case "SHOPPING":
-          label = "Bairro → Shopping";
-        break;
-        case "SHOPPING_RETORNO": // se você tiver outros casos personalizados no futuro
-          label = "Shopping → Bairro";
-          break;
-        default:
-          label = direcaoKey;
-      }
-
-      return (
-        <button
-          key={direcaoKey}
-          onClick={() => handleDirecaoClick(direcaoKey)}
-          className={`btn-direcao ${direcao === direcaoKey ? "active" : ""}`}
-        >
-          {label}
-        </button>
-        );
-      })}
+            return (
+              <button
+                key={direcaoKey}
+                onClick={() => handleDirecaoClick(direcaoKey)}
+                className={`btn-direcao ${direcao === direcaoKey ? "active" : ""}`}
+              >
+                {label}
+              </button>
+            );
+          })}
         </div>
 
-        <div className="paradas-list">
+        <div className={`paradas-list ${animationClass}`}>
           {paradasArray.map(([key, parada]) => {
             const isPontoInicial = key === "ponto_inicial";
             const isPontoFinal = key === "ponto_final";
@@ -206,11 +222,7 @@ const Itinerarios = () => {
         onClick={toggleNavegacao}
         title={mostrarTabela ? "Voltar para os filtros" : "Ir para a tabela"}
       >
-        {mostrarTabela ? (
-          <FaArrowUp /> // Ícone para subir
-        ) : (
-          <FaArrowDown /> // Ícone para descer
-        )}
+        {mostrarTabela ? <FaArrowUp /> : <FaArrowDown />}
       </button>
     </div>
   );

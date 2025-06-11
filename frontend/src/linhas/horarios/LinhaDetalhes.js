@@ -97,7 +97,7 @@ const LinhaDetalhes = () => {
   setTermoBusca(''); // limpa o campo de busca
 
   setTimeout(() => {
-    navigate(`/${linhaId}`);
+    navigate(`/horarios/${linhaId}`);
   }, 600);
 };
 
@@ -197,7 +197,13 @@ const toggleNavegacao = () => {
                 >
                 <FaFilePdf />
                 </a>
-                <a href="/" className="linha-button" title="Itinerário"><FaBus /></a>
+                <a 
+  href={`/itinerarios/${id}`} 
+  className="linha-button" 
+  title="Itinerário"
+>                      
+  <FaBus />
+</a>
                 </div>
               </div>
           )}

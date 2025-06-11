@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import '../styles/Header.css';
 
 const Header = ({ setShowItinerarios }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -38,7 +39,7 @@ const Header = ({ setShowItinerarios }) => {
       <div className="header-container">
         <nav className="nav">
           <div className="logo-container">
-            <Link to="/" onClick={handleHorariosClick}>
+            <Link to="/horarios" onClick={handleHorariosClick}>
               <img 
                 src="http://votorantim.citymais.com.br/wp-content/uploads/2020/07/logo-city3.png" 
                 alt="Logo da CITY+" 
@@ -50,24 +51,25 @@ const Header = ({ setShowItinerarios }) => {
           {/* Menu desktop */}
           <ul className="nav-links">
             <li>
-    <NavLink 
-      to="/" 
-      end 
-      className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
-      onClick={handleHorariosClick}
-    >
-      HORÁRIOS
-    </NavLink>
-  </li>
+              <NavLink 
+                to="/horarios" 
+                className={({ isActive }) => 
+                  `nav-item ${isActive || location.pathname.startsWith('/horarios/') ? 'active' : ''}`
+                }
+                onClick={handleHorariosClick}
+              >
+                HORÁRIOS
+              </NavLink>
+            </li>
             <li>
-    <NavLink 
-      to="/itinerarios" 
-      className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
-      onClick={handleItinerariosClick}
-    >
-      ITINERÁRIOS
-    </NavLink>
-  </li>
+              <NavLink 
+                to="/itinerarios" 
+                className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
+                onClick={handleItinerariosClick}
+              >
+                ITINERÁRIOS
+              </NavLink>
+            </li>
             <li>
               <NavLink 
                 to="/blog" 
@@ -106,10 +108,12 @@ const Header = ({ setShowItinerarios }) => {
           <ul className="mobile-nav-links">
             <li>
               <NavLink 
-                to="/" 
+                to="/horarios" 
                 end 
                 onClick={handleHorariosClick}
-                className={({ isActive }) => `mobile-nav-item ${isActive ? 'active' : ''}`}
+                className={({ isActive }) => 
+                  `mobile-nav-item ${isActive || location.pathname.startsWith('/horarios/') ? 'active' : ''}`
+                }
               >
                 HORÁRIOS
               </NavLink>
@@ -120,7 +124,7 @@ const Header = ({ setShowItinerarios }) => {
                 onClick={handleItinerariosClick}
                 className={({ isActive }) => `mobile-nav-item ${isActive ? 'active' : ''}`}
               >
-              ITINERÁRIOS
+                ITINERÁRIOS
               </NavLink>
             </li>
             <li>

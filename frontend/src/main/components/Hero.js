@@ -107,12 +107,12 @@ const Hero = ({ showItinerarios }) => {
           linhasFiltradas.map((linha) => (
             <Link
               key={linha.id}
-              to={`/${linha.id}`}
+              to={`/horarios/${linha.id}`}
               className={`linha ${hoveredLinha && hoveredLinha !== linha.id ? 'darker' : ''}`}
               onMouseEnter={() => setHoveredLinha(linha.id)}
               onMouseLeave={() => setHoveredLinha(null)}
             >
-              Horário {linha.id} - {linha.nome}
+            Horário {linha.id} - {linha.nome}
             </Link>
           ))
         ) : (
