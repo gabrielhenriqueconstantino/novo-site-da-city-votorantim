@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useState } from 'react';
 import './main/styles/global.css';
 import './main/styles/App.css';
