@@ -12,22 +12,23 @@ const schema = yup.object().shape({
   nomeMae: yup.string().required('Nome da mãe é obrigatório'),
   cpf: yup.string()
     .required('CPF é obrigatório')
-    .matches(/^\d{3}\.\d{3}\.\d{3}\-\d{2}$/, 'CPF inválido'),
+    .matches(/^\d{3}\.\d{3}\.\d{3}-\d{2}$/, 'CPF inválido'),
   telefone: yup.string()
     .required('Telefone é obrigatório')
-    .matches(/^\(\d{2}\) \d{4,5}\-\d{4}$/, 'Telefone inválido'),
+    .matches(/^\(\d{2}\) \d{4,5}-\d{4}$/, 'Telefone inválido'),
   endereco: yup.string().required('Endereço é obrigatório'),
   numero: yup.string().required('Número é obrigatório'),
   bairro: yup.string().required('Bairro é obrigatório'),
   cep: yup.string()
     .required('CEP é obrigatório')
-    .matches(/^\d{5}\-\d{3}$/, 'CEP inválido'),
+    .matches(/^\d{5}-\d{3}$/, 'CEP inválido'),
   email: yup.string()
     .email('E-mail inválido')
     .required('E-mail é obrigatório'),
   localRetirada: yup.string().required('Local de retirada é obrigatório'),
   tipoCartao: yup.string().required('Tipo de cartão é obrigatório')
 });
+
 
 const Cadastro = () => {
   const { register, handleSubmit, formState: { errors }, reset } = useForm({
