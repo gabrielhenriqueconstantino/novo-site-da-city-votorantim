@@ -129,9 +129,9 @@ const Header = ({ setShowItinerarios }) => {
             </li>
             <li>
               <NavLink 
-                to="/blog" 
+                to="/cadastro" 
+                className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
                 onClick={closeMenu}
-                className={({ isActive }) => `mobile-nav-item ${isActive ? 'active' : ''}`}
               >
                 CADASTRO
               </NavLink>
