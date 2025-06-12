@@ -12,7 +12,9 @@ import Itinerarios from './linhas/itinerarios/ItinerarioDetalhes';
 import Cadastro from './main/components/Cadastro';
 
 function App() {
+  // eslint-disable-next-line no-unused-vars
   const location = useLocation();
+  // eslint-disable-next-line no-unused-vars
   const [showItinerarios, setShowItinerarios] = useState(false);
 
   return (
