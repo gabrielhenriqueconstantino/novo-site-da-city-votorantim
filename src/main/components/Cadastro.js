@@ -248,10 +248,8 @@ const Cadastro = () => {
                 className={errors.localRetirada ? 'error' : ''}
               >
                 <option value="">Selecione um local</option>
-                <option value="terminal_central">Terminal Central</option>
-                <option value="terminal_leste">Terminal Leste</option>
-                <option value="terminal_oeste">Terminal Oeste</option>
-                <option value="prefeitura">Prefeitura Municipal</option>
+                <option value="terminal_central">Terminal Urbano João Souto</option>
+                <option value="itinerante">Itinerante</option>
               </select>
               {errors.localRetirada && <span className="error-message">{errors.localRetirada.message}</span>}
             </div>
@@ -266,8 +264,7 @@ const Cadastro = () => {
                 <option value="">Selecione um tipo</option>
                 <option value="estudante">Estudante</option>
                 <option value="idoso">Idoso</option>
-                <option value="pcd">Pessoa com Deficiência</option>
-                <option value="regular">Regular</option>
+                <option value="regular">Comum</option>
               </select>
               {errors.tipoCartao && <span className="error-message">{errors.tipoCartao.message}</span>}
             </div>
