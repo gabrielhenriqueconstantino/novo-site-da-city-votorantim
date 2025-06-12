@@ -12,15 +12,16 @@ import Itinerarios from './linhas/itinerarios/ItinerarioDetalhes';
 import Cadastro from './main/components/Cadastro';
 
 function App() {
-  // eslint-disable-next-line no-unused-vars
   const location = useLocation();
-  // eslint-disable-next-line no-unused-vars
   const [showItinerarios, setShowItinerarios] = useState(false);
+
+  // Verifica se a rota atual é '/cadastro'
+  const shouldShowBanner = location.pathname !== '/cadastro';
 
   return (
     <div className="App">
       <Header setShowItinerarios={setShowItinerarios} />
-      <Banner />
+      {shouldShowBanner && <Banner />}
       <Routes>
         <Route path="/" element={<Navigate to="/horarios" replace />} />
         <Route
@@ -39,7 +40,6 @@ function App() {
           path="/itinerarios/:linhaId"
           element={<Itinerarios />}
         />
-        {/* Adicione esta nova rota para o cadastro */}
         <Route
           path="/cadastro"
           element={<Cadastro />}

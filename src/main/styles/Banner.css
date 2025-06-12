@@ -1,8 +1,49 @@
 .banner {
-    background-color: #FFCC00;
-    padding: 50px;
-    text-align: center;
-    font-family: 'Poppins', sans-serif; /* Fonte Poppins */
-    font-weight: bold; /* Negrito */
+  background: linear-gradient(to bottom, #fcd34d 0%, #fff9e7 30%, #ffffff 100%);
+  padding: 0rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+
+
+@media (max-width: 768px) {
+    .banner-img-central {
+        height: auto;
+        width: 100vw; /* ajuste conforme necessário */
+        top: 0;
+    }
+}
+
+.banner-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  width: 100%;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.banner-texto {
+  flex: 1;
+  color: #002366;
+}
+
+.banner-texto h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.banner-texto p {
+  font-size: 1.2rem;
+}
+
+.banner-img {
+  flex: 1;
+  max-width: 300px;
+  width: 100%;
+  height: auto;
 }

@@ -4,8 +4,11 @@ import '../styles/Banner.css';
 const Banner = () => {
   return (
     <section className="banner">
-      <h1>Bem-vindo à CITY+ Votorantim</h1>
-      <p>Consulte horários e informações das linhas municipais.</p>
+      <img
+        src="./img/banner-img.png"
+        alt="Banner CITY+ com ônibus e mapa"
+        className="banner-img-central"
+      />
     </section>
   );
 };
