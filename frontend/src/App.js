@@ -11,7 +11,9 @@ import LinhaDetalhes from './linhas/horarios/LinhaDetalhes';
 import Itinerarios from './linhas/itinerarios/ItinerarioDetalhes';
 
 function App() {
+  // eslint-disable-next-line no-unused-vars
   const location = useLocation();
+  // eslint-disable-next-line no-unused-vars
   const [showItinerarios, setShowItinerarios] = useState(false);
 
   return (
