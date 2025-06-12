@@ -9,11 +9,10 @@ import Hero from './main/components/Hero';
 import Footer from './main/components/Footer';
 import LinhaDetalhes from './linhas/horarios/LinhaDetalhes';
 import Itinerarios from './linhas/itinerarios/ItinerarioDetalhes';
+import Cadastro from './main/components/Cadastro';
 
 function App() {
-  // eslint-disable-next-line no-unused-vars
   const location = useLocation();
-  // eslint-disable-next-line no-unused-vars
   const [showItinerarios, setShowItinerarios] = useState(false);
 
   return (
@@ -37,6 +36,11 @@ function App() {
         <Route
           path="/itinerarios/:linhaId"
           element={<Itinerarios />}
+        />
+        {/* Adicione esta nova rota para o cadastro */}
+        <Route
+          path="/cadastro"
+          element={<Cadastro />}
         />
       </Routes>
       <Footer />
