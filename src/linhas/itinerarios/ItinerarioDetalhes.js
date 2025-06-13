@@ -118,6 +118,7 @@ const Itinerarios = () => {
     });
 
   return (
+    
     <div className={`itinerario-container ${animationClass}`}>
       <section id="itinerario" className="horarios">
         <h2>Itinerários das Linhas</h2>
