@@ -35,8 +35,8 @@ const Hero = ({ showItinerarios }) => {
     <section id="itinerarios" className="horarios">
       <h2>Itinerários das Linhas</h2>
 
-      <div className="search-container" style={{ display: 'flex', alignItems: 'center' }}>
-        <FaSearch className='lupa' style={{ marginRight: '-28px', zIndex: '1001' }} />
+      <div className="search-container">
+        <FaSearch className='lupa'/>
         <input
           type="text"
           id="search"
@@ -83,8 +83,8 @@ const Hero = ({ showItinerarios }) => {
     <section id="horarios" className="horarios">
       <h2>Horários das Linhas</h2>
 
-      <div className="search-container" style={{ display: 'flex', alignItems: 'center' }}>
-        <FaSearch className='lupa' style={{ marginRight: '-28px', zIndex: '1001' }} />
+       <div className="search-container">
+        <FaSearch className='lupa'/>
         <input
           type="text"
           id="search"

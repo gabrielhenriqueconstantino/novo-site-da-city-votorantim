@@ -123,8 +123,8 @@ const Itinerarios = () => {
       <section id="itinerario" className="horarios">
         <h2>Itinerários das Linhas</h2>
 
-        <div className="search-container" style={{ display: 'flex', alignItems: 'center' }}>
-                <FaSearch className='lupa' style={{ marginRight: '-28px', zIndex: '1001' }} />
+         <div className="search-container">
+                <FaSearch className='lupa'/>
                 <input
                   type="text"
                   id="search"
@@ -133,7 +133,7 @@ const Itinerarios = () => {
                   value={termoBusca}
                   onChange={handleBuscaChange}
                 />
-              </div>
+          </div>
         
 
         {termoBusca && (

@@ -4,9 +4,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: 'Poppins', sans-serif;
 }
-
-
 
 @media (max-width: 768px) {
     .banner-img-central {
@@ -26,19 +25,23 @@
   flex-wrap: wrap;
 }
 
-.banner-texto {
+.banner-texto-desktop {
   flex: 1;
+  color: #002366;
+  margin-left: 30px;
+}
+
+.banner-texto-desktop h1 {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
   color: #002366;
 }
 
-.banner-texto h1 {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-  font-weight: bold;
-}
-
-.banner-texto p {
+.banner-texto-desktop p {
   font-size: 1.2rem;
+  color: #002366;
+  font-weight: 500;
 }
 
 .banner-img {
@@ -47,3 +50,63 @@
   width: 100%;
   height: auto;
 }
+
+/* Esconde o texto no mobile, mostra no desktop */
+.banner-texto-desktop {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.banner-img-central {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .banner-texto-desktop {
+    display: none;
+  }
+  .banner-img-central {
+    display: block;
+    height: auto;
+    width: 100vw;
+    top: 0;
+  }
+}
+
+/* Container flex para desktop */
+.banner-content-desktop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* Imagem do ônibus à direita no desktop */
+.banner-img-desktop {
+  width: 350px;
+  height: auto;
+  display: block;
+  margin-top: 20px;
+}
+
+/* Esconde o conteúdo desktop no mobile */
+@media (max-width: 768px) {
+  .banner-content-desktop {
+    display: none;
+  }
+  .banner-img-central {
+    display: block;
+    height: auto;
+    width: 100vw;
+    top: 0;
+  }
+}
+
+/* Esconde a imagem desktop no mobile */
+@media (max-width: 768px) {
+  .banner-img-desktop {
+    display: none;
+  }
+}
+

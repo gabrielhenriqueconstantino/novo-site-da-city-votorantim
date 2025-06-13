@@ -2,24 +2,42 @@
     text-align: center;
     padding: 20px;
     font-family: 'Poppins';
+    background-color: #fff;
+    margin-top: -30px;
+}
+
+.horarios h2 {
+    color: #002366;
 }
 
 .search-container {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 20px 0; /* Espaço entre o título e a barra de pesquisa */
+    margin: 20px 0;
+    position: relative; /* Adicionado */
 }
 
 .search-bar {
     width: 100%;
-    padding: 12px 20px 12px 45px;
+    padding: 12px 20px 12px 45px; /* Espaço à esquerda para a lupa */
     font-size: 16px;
     border-radius: 30px;
     border: 2px solid #004AAD;
     outline: none;
     transition: all 0.3s ease;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.lupa {
+    position: absolute;
+    left: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #004AAD;
+    font-size: 18px;
+    pointer-events: none;
+    z-index: 2;
 }
 
 .search-bar:focus {
@@ -142,10 +160,13 @@
         margin: 10px 0;
         padding: 0 10px;
     }
-    
     .search-bar {
         padding: 10px 15px 10px 40px;
         font-size: 14px;
+    }
+    .lupa {
+        left: 20px;
+        font-size: 16px;
     }
     
     .linha-container {
@@ -187,8 +208,8 @@
         font-size: 13px;
         padding-left: 35px;
     }
-    
-    .search-button {
-        left: 15px;
+    .lupa {
+        left: 12px;
+        font-size: 15px;
     }
 }

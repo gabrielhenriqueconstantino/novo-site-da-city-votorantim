@@ -146,8 +146,8 @@ const toggleNavegacao = () => {
       <section id="horarios" className="horarios">
         <h2>Horários das Linhas</h2>
 
-         <div className="search-container" style={{ display: 'flex', alignItems: 'center' }}>
-                 <FaSearch className='lupa' style={{ marginRight: '-28px', zIndex: '1001' }} />
+          <div className="search-container">
+                 <FaSearch className='lupa'/>
                  <input
                    type="text"
                    id="search"
@@ -196,12 +196,12 @@ const toggleNavegacao = () => {
                 <FaFilePdf />
                 </a>
                 <a 
-  href={`/itinerarios/${id}`} 
-  className="linha-button" 
-  title="Itinerário"
->                      
-  <FaBus />
-</a>
+                href={`/itinerarios/${id}`} 
+                className="linha-button" 
+                title="Itinerário"
+              >                      
+              <FaBus />
+              </a>
                 </div>
               </div>
           )}
