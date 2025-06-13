@@ -10,6 +10,7 @@ import { FaSearch } from 'react-icons/fa';
 const Hero = ({ showItinerarios }) => {
   const [termoBusca, setTermoBusca] = useState('');
   const [hoveredLinha, setHoveredLinha] = useState(null);
+  // eslint-disable-next-line no-unused-vars
   const [linhaSelecionada, setLinhaSelecionada] = useState(null);
   
   const todasLinhas = Object.entries(horariosData.linhas).map(([id, data]) => ({

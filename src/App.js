@@ -13,6 +13,7 @@ import Cadastro from './main/components/Cadastro';
 
 function App() {
   const location = useLocation();
+  // eslint-disable-next-line no-unused-vars
   const [showItinerarios, setShowItinerarios] = useState(false);
 
   // Verifica se a rota atual é '/cadastro'
