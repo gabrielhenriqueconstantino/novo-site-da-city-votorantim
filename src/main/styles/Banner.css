@@ -1,3 +1,25 @@
+.banner-fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.9s cubic-bezier(0.4,0,0.2,1), transform 0.7s cubic-bezier(0.4,0,0.2,1);
+}
+
+.banner-fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.banner-img-fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s cubic-bezier(0.4,0,0.2,1), transform 0.7s cubic-bezier(0.4,0,0.2,1);
+}
+
+.banner-img-fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .banner {
   background: linear-gradient(to bottom, #fcd34d 0%, #fff9e7 30%, #ffffff 100%);
   padding: 0rem 2rem;

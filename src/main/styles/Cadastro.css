@@ -324,7 +324,7 @@ body {
 
   .primary-button,
   .secondary-button {
-    width: 100%;
+    width: 80%;
     justify-content: center;
   }
 
@@ -343,3 +343,4 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   }
 }
+
