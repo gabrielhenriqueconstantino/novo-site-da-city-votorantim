@@ -252,8 +252,6 @@ table tr:nth-child(even) {
 
 /* Ajustes para dispositivos móveis */
 @media (max-width: 768px) {
-
-    
     .info-container {
         justify-content: center;
         margin: 8px 20px;
@@ -293,6 +291,10 @@ table tr:nth-child(even) {
         width: 120px; /* Definir largura fixa para melhor encaixe */
         text-align: center;
         font-family: 'Poppins', sans-serif;
+    }
+
+    .special-buttons {
+        margin-top: 6px;
     }
     
 }
