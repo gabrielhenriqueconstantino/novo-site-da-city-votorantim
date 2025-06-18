@@ -125,7 +125,7 @@ const Contato = () => {
       >
         <div className="hero-content">
           <h1>Fale Conosco</h1>
-          <p>Estamos aqui para ajudar. Entre em contato através do formulário ou pelos nossos canais de atendimento.</p>
+          <p>Estamos aqui para ajudar! <br />Entre em contato através do formulário ou pelos nossos canais de atendimento.</p>
         </div>
       </motion.div>
 
