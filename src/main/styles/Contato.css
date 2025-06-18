@@ -11,20 +11,6 @@
   --transition: all 0.3s ease;
 }
 
-/* Reset and Base Styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'Poppins', sans-serif;
-  line-height: 1.6;
-  color: var(--dark-gray);
-  background-color: var(--white);
-}
-
 /* Container Styles */
 .contato-container {
   width: 100%;
@@ -32,6 +18,9 @@ body {
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 /* Hero Section */

@@ -193,11 +193,7 @@
         padding: 10px 15px 10px 40px;
         font-size: 14px;
     }
-    .lupa {
-        left: 20px;
-        font-size: 16px;
-    }
-    
+
     .linha-container {
         grid-template-columns: 1fr;
         gap: 8px;
@@ -206,8 +202,8 @@
     
     .linha {
         padding: 12px;
-        font-size: 14px;
-        min-height: 45px;
+        font-size: 0.95rem;
+        min-height: 60px;
         border-radius: 8px;
     }
     
@@ -227,18 +223,4 @@
     }
 }
 
-@media (max-width: 480px) {
-    .linha {
-        font-size: 13px;
-        padding: 10px;
-    }
-    
-    .search-bar {
-        font-size: 13px;
-        padding-left: 35px;
-    }
-    .lupa {
-        left: 12px;
-        font-size: 15px;
-    }
-}
+
