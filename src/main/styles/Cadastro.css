@@ -42,15 +42,10 @@ body {
 
 /* Cabeçalho */
 .cadastro-header {
-  background-color: var(--primary-color);
+  background: linear-gradient(135deg, var(--primary-color) 0%, #005fa3 100%);
   color: var(--white);
-  padding: 2rem 1rem;
+  padding: 4rem 1rem;
   text-align: center;
-}
-
-.cadastro-header .logo {
-  height: 60px;
-  margin-bottom: 1rem;
 }
 
 .cadastro-header h1 {

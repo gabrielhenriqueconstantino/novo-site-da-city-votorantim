@@ -10,6 +10,7 @@ import Footer from './main/components/Footer';
 import LinhaDetalhes from './linhas/horarios/LinhaDetalhes';
 import Itinerarios from './linhas/itinerarios/ItinerarioDetalhes';
 import Cadastro from './main/components/Cadastro';
+import Contato from './main/components/Contato';
 
 function App() {
   const location = useLocation();
@@ -17,7 +18,7 @@ function App() {
   const [showItinerarios, setShowItinerarios] = useState(false);
 
   // Verifica se a rota atual é '/cadastro'
-  const shouldShowBanner = location.pathname !== '/cadastro';
+  const shouldShowBanner = location.pathname !== '/cadastro' && location.pathname !== '/contato';
 
   return (
     <div className="App">
@@ -44,6 +45,10 @@ function App() {
         <Route
           path="/cadastro"
           element={<Cadastro />}
+        />
+        <Route 
+          path="/contato"
+          element={<Contato />}
         />
       </Routes>
       <Footer />

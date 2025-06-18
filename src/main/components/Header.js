@@ -81,7 +81,7 @@ const Header = ({ setShowItinerarios }) => {
             </li>
             <li>
               <NavLink 
-                to="/contact" 
+                to="/contato" 
                 className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
                 onClick={closeMenu}
               >
@@ -138,7 +138,7 @@ const Header = ({ setShowItinerarios }) => {
             </li>
             <li>
               <NavLink 
-                to="/contact" 
+                to="/contato" 
                 onClick={closeMenu}
                 className={({ isActive }) => `mobile-nav-item ${isActive ? 'active' : ''}`}
               >

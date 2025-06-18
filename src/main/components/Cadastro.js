@@ -169,7 +169,7 @@ const Cadastro = () => {
         animate={headerControls}
       >
         <h1>Cadastro Cartão Votorantim</h1>
-        <p>Preencha o formulário abaixo para solicitar seu cartão de transporte</p>
+        <p>Preencha o formulário abaixo para solicitar seu <br />cartão de transporte</p>
       </motion.div>
 
       <form onSubmit={handleSubmit(onSubmit)} className="cadastro-form">
