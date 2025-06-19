@@ -21,7 +21,10 @@ const Login = () => {
   }, []);
 
   // Definindo credenciais provisórias
+
+  // eslint-disable-next-line no-unused-vars
   const USUARIO_PADRAO = "admin";
+  // eslint-disable-next-line no-unused-vars
   const SENHA_PADRAO = "1234";
 
   const [mensagem, setMensagem] = useState("");
