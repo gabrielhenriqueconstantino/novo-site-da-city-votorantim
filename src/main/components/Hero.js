@@ -4,7 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 import '../styles/Hero.css';
 import '../styles/global.css';
 import horariosData from '../../data/horarios.json';
-import ItinerarioDetalhes from '../../linhas/itinerarios/ItinerarioDetalhes';
+import ItinerarioDetalhes from '../../linhas/itinerarios/ItinerarioDetalhes'
 import { FaSearch } from 'react-icons/fa';
 
 const Hero = ({ showItinerarios }) => {

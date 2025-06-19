@@ -1,5 +1,6 @@
 // src/components/Footer.js
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { FaLock } from 'react-icons/fa';
 import '../styles/Footer.css';
 
@@ -35,15 +36,15 @@ const Footer = () => {
       </div>
 
       <div className="footer-bottom">
-        <p>
-          Copyright © 2025{' '}
-          <a href="https://votorantim.citymais.com.br/" target="_blank" rel="noreferrer">
-            City Votorantim
-          </a>{' '}
-          – Todos Direitos Reservados.
-        </p>
-        <a href='/'><FaLock /></a>
-      </div>
+      <p>
+        Copyright © 2025{' '}
+        <a href="https://votorantim.citymais.com.br/" target="_blank" rel="noreferrer">
+          City Votorantim
+        </a>{' '}
+        – Todos Direitos Reservados.
+      </p>
+      <Link to="/login"><FaLock /></Link>
+    </div>
     </footer>
   );
 };

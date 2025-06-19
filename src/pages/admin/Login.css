@@ -1,0 +1,604 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* ANIMAÇÃO DE ENTRADA */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fundo fixo com imagem */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  flex-direction: column;
+  animation: fadeInUp 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+}
+
+.login-container img {
+  width: 100vw;
+}
+.login-container img {
+  object-fit: cover;
+  height: 100vh;
+  max-width: 100vw;
+  transform: scale(0.999);
+}
+
+/* Desativa a scrollbar do navegador */
+
+.login-card {
+  display: flex;
+  width: 900px;
+  height: 500px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+  position: fixed;
+  overflow: hidden;
+  margin-bottom: 90px;
+  animation-delay: 0.2s;
+}
+
+.login-left {
+  flex: 0.5;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #222;
+  position: relative;
+  z-index: 1;
+  border-right: 1px solid #ffffffa9;
+  border-top: 1px solid #ffffffa9 ;
+  border-bottom: 1px solid #ffffffa9 ;
+  border-left: 1px solid #ffffffa9;
+}
+
+.login-right {
+  flex: 1.5;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centraliza verticalmente */
+  align-items: center; /* Centraliza horizontalmente */
+  color: #222;
+  position: relative;
+  z-index: 1;
+  border-right: 1px solid #ffffffa9;
+  border-top: 1px solid #ffffffa9;
+  border-bottom: 1px solid #ffffffa9;
+  background: rgba(255, 255, 255, 0.100);
+  border-radius: 0 20px 20px 0;
+}
+
+.login-left {
+  background: rgba(255, 255, 255, 0.500);
+  border-radius: 20px 0 0 20px;
+  color: #1d1d1d;
+}
+
+.login-right {
+  background: rgba(255, 255, 255, 0.100);
+  border-radius: 0 20px 20px 0;
+  color: #1d1d1d;
+}
+
+.login-right h2 {
+  font-size: 28px;
+  margin-bottom: 30px; /* Reduzi para melhor espaçamento */
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+  letter-spacing: 8px;
+  text-align: center;
+  width: 100%; /* Garante que o h2 ocupe toda a largura */
+  animation: fadeInUp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+  animation-delay: 0.4s;
+}
+
+.login-left h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+  letter-spacing: 8px;
+  text-align: center;
+  animation: fadeInUp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+  animation-delay: 0.4s;
+}
+
+.login-left  p {
+  font-size: 15px;
+  margin-bottom: 30px;
+  font-family: 'Jost', sans-serif;
+  text-align: center;
+  color: #1d1d1d;
+  font-weight: 400;
+  animation: fadeInUp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+  animation-delay: 0.4s;
+}
+
+.login-left img {
+  width: 310px;
+  height: auto;
+  margin: 0;
+  animation: fadeInUp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+  animation-delay: 0.9s;
+}
+
+.input-group {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center; /* Centraliza os inputs */
+  animation: fadeInUp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+}
+
+.input-group:nth-child(1) {
+  animation-delay: 0.6s;
+}
+
+.input-group:nth-child(2) {
+  animation-delay: 0.7s;
+}
+
+.input-icon {
+  position: absolute;
+  left: 25px;
+  top: 50%;
+  transform: translateY(-83%);
+  color: #1d1d1d;
+  font-size: 16px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+}
+
+.input-icon::after {
+  content: "";
+  display: inline-block;
+  width: 1px;
+  height: 30px;
+  background-color: rgba(0, 0, 0, 0.432);
+  margin-left: 12px;
+}
+
+.input-with-icon {
+  width: 75%;
+  padding: 14px 20px 14px 60px !important; /* Aumentei o padding para acomodar a barra */
+  border-radius: 25px;
+  border: none;
+  background: rgba(255, 255, 255, 0.301);
+  color: #000;
+  font-size: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.253);
+  animation: fadeInUp 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+}
+
+.eye-icon {
+  position: absolute;
+  right: 5%;
+  top: 35%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  z-index: 2;
+  color: #1d1d1d;
+  opacity: 0.7;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.3);
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.eye-icon:hover {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.4);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.eye-icon-svg {
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  transform: scale(1);
+}
+
+.eye-icon:hover .eye-icon-svg {
+  transform: scale(1.1);
+}
+
+/* Animação quando o ícone muda */
+.eye-icon-svg {
+  animation: none; /* Reset */
+}
+
+.eye-icon.clicked .eye-icon-svg {
+  animation: iconBounce 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+@keyframes iconBounce {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.3); }
+  100% { transform: scale(1); }
+}
+
+.input-group input {
+  width: 75%;
+  padding: 10px 2px 14px 60px;
+  border-radius: 25px;
+  border: 2px solid transparent; /* Adiciona borda transparente para o efeito */
+  margin-bottom: 20px;
+  background: rgba(255, 255, 255, 0.301);
+  color: #000;
+  font-size: 16px;
+  display: block;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+  outline: none;
+  font-family: 'Jost', sans-serif;
+}
+
+/* Efeito quando o input está em foco */
+.input-group input:focus {
+  border-color: rgba(0, 27, 77, 0.4);
+  background: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 4px 12px rgba(0, 27, 77, 0.2);
+  transform: scale(1.02);
+}
+
+/* Efeito suave para o ícone quando o input está em foco */
+.input-group input:focus ~ .input-icon {
+  color: #001b4d;
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* Animação para o ícone do olho */
+.input-group input:focus ~ .eye-icon {
+  transform: translateY(-50%) scale(1.1);
+  opacity: 1;
+}
+
+.input-group input::placeholder {
+  color: #1d1d1d;
+  letter-spacing: 6px;
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  text-align: left;
+}
+
+.login-button {
+  padding: 12px 20px;
+  border-radius: 25px;
+  border: none;
+  background-color: #001b4d;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: background 0.3s ease;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 75%;
+  font-size: 16px;
+  font-family: 'Jost', sans-serif;
+  letter-spacing: 3px;
+  animation: fadeInUp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+  animation-delay: 0.9s;
+}
+
+.login-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 75%;
+  margin: 10px 0 25px;
+  animation: fadeInUp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+  animation-delay: 0.8s;
+}
+
+/* Estilo personalizado para o checkbox */
+.remember-me {
+  display: flex;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  font-family: 'Jost', sans-serif;
+  font-size: 14px;
+  color: #ffffff;
+  user-select: none;
+}
+
+.custom-checkbox {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: relative;
+  height: 18px;
+  width: 18px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(0, 27, 77, 0.5);
+  border-radius: 4px;
+  margin-right: 10px;
+  transition: all 0.3s ease;
+}
+
+.remember-me:hover .checkmark {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.custom-checkbox:checked ~ .checkmark {
+  background-color: #001b4d;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.custom-checkbox:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Estilo para o link "Esqueci senha" */
+.forgot-password {
+  color: #ffffff;
+  font-family: 'Jost', sans-serif;
+  font-size: 14px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.forgot-password:hover {
+  color: #00308a;
+}
+
+.forgot-password::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  bottom: -2px;
+  left: 0;
+  background-color: #00308a;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.forgot-password:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+  animation: fadeInUp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+  animation-delay: 1s;
+}
+
+.icon {
+  width: 30px;
+  height: 30px;
+  background: white;
+  border-radius: 50%;
+}
+
+@media only screen and (max-width: 768px) {
+  .login-container {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0;
+    min-height: 100vh;
+    position: relative;
+    z-index: 0;
+  }
+  
+  .login-card {
+    flex-direction: column;
+    width: 98vw;
+    max-width: 340px;
+    min-width: 0;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    z-index: 2;
+    box-sizing: border-box;
+    padding: 0;
+    margin-top: -40px;
+  }
+
+  .login-left,
+  .login-right {
+    flex: none;
+    width: 100%;
+    min-width: 0;
+    padding: 18px 8px;
+    border-radius: 0;
+    border: 1px solid #ffffffa9;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+
+  }
+
+  .login-left {
+    border-radius: 12px 12px 0 0;
+    border-bottom: none;
+    height: 180px;
+    background: rgba(255, 255, 255, 0.100);
+    
+  }
+
+  .login-right {
+    border-radius: 0 0 12px 12px;
+    border-top: none;
+  }
+
+  .login-left img {
+    width: 150px;
+    margin: 0 auto 6px auto;
+    display: block;
+  }
+
+  .login-left h2,
+  .login-right h2 {
+    font-size: 20px;
+    letter-spacing: 1.5px;
+    margin-bottom: 6px;
+    text-align: center;
+    width: 100%;
+    word-break: break-word;
+    color: aliceblue;
+  }
+
+  .login-left p {
+    font-size: 14.5px;
+    margin-bottom: 6px;
+    text-align: center;
+    width: 100%;
+    word-break: break-word;
+    color: aliceblue;
+  }
+
+  .input-group,
+  .login-options,
+  .login-button {
+    width: 96%;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  .input-with-icon {
+    padding: 8px 12px 8px 36px !important;
+    font-size: 13px;
+    text-align: center;
+    min-width: 0;
+  }
+
+  .input-group input {
+    font-size: 13px;
+    padding: 8px 2px 8px 36px;
+    min-width: 0;
+    text-align: left;
+    color: #ffffff;
+  }
+
+  .input-icon {
+    left: 20px;
+    font-size: 13px;
+    top: 35%;
+    transform: translateY(-50%);
+    color: #ffffff;
+  }
+
+  .input-icon::after {
+  content: "";
+  display: inline-block;
+  width: 1px;
+  height: 30px;
+  background-color: rgba(255, 255, 255, 0.432);
+  margin-left: 9px;
+}
+
+  .eye-icon {
+    right: 8%;
+    width: 22px;
+    height: 22px;
+    top: 33.5%;
+    transform: translateY(-50%);
+    color: #ffffff;
+  }
+
+  .login-button {
+    padding: 8px 1px;
+    font-size: 13px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    text-align: center;
+    width: 90%;
+
+  }
+
+  .input-group input::placeholder {
+  color: #fff;
+  letter-spacing: 4px;
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  text-align: left;
+}
+
+  .remember-me {
+    margin-top: -15px;
+    margin-bottom: 10px;
+  }
+
+  .checkmark {
+    height: 16px;
+    width: 16px;
+    margin-right: 8px;
+    border-radius: 3px;
+    border-width: 1.5px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.07);
+  }
+
+  .social-icons {
+    justify-content: center;
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    gap: 10px;
+  }
+
+  .icon {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+/* Ajustes para telas muito pequenas */
