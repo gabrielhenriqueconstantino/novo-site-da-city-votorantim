@@ -20,6 +20,43 @@ const Login = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  // Definindo credenciais provisórias
+  const USUARIO_PADRAO = "admin";
+  const SENHA_PADRAO = "1234";
+
+  const [mensagem, setMensagem] = useState("");
+  const [tipoMensagem, setTipoMensagem] = useState(""); // 'erro' ou 'sucesso'
+
+  const handleLogin = () => {
+  if (username === "admin" && password === "1234") {
+    setMensagem("Login realizado com sucesso!");
+    setTipoMensagem("sucesso");
+    // Aqui você poderia redirecionar ou guardar um token
+  } else {
+    setMensagem("Usuário ou senha incorretos.");
+    setTipoMensagem("erro");
+  }
+};
+
+  const [fadeOut, setFadeOut] = useState(false);
+  useEffect(() => {
+  if (mensagem) {
+    // Começa a desaparecer depois de 3.5 segundos
+    const fadeTimer = setTimeout(() => setFadeOut(true), 3500);
+    // Remove a mensagem após 4 segundos
+    const removeTimer = setTimeout(() => {
+      setMensagem("");
+      setTipoMensagem("");
+      setFadeOut(false);
+    }, 4000);
+
+    return () => {
+      clearTimeout(fadeTimer);
+      clearTimeout(removeTimer);
+    };
+  }
+}, [mensagem]);
+
   return (
     <section className="login-container">
       <img src='/img/city_bg.jpg' alt="background" />
@@ -34,6 +71,13 @@ const Login = () => {
         {/* Lado direito - Fazer Login */}
         <div className="login-right">
           <h2>FAÇA LOGIN</h2>
+          {mensagem && (
+          <p
+            className={`login-mensagem ${tipoMensagem === "erro" ? "erro" : "sucesso"} ${fadeOut ? "fade-out" : ""}`}
+          >
+          {mensagem}
+          </p>
+          )}
           <div className="input-group">
             <span className="input-icon">
               <FaUser />
@@ -76,7 +120,9 @@ const Login = () => {
             </label>
               <a href="/" className="forgot-password">Esqueceu a senha?</a>
           </div>
-          <button className="login-button">ENTRAR</button>
+          <button className="login-button" onClick={handleLogin}>
+            ENTRAR
+          </button>
           <div className="social-icons">
             <i className="icon facebook"></i>
             <i className="icon tiktok"></i>

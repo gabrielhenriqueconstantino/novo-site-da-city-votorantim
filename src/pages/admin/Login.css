@@ -601,4 +601,34 @@
   }
 }
 
-/* Ajustes para telas muito pequenas */
+
+.login-mensagem {
+  font-size: 20px;
+  font-family: 'Jost', sans-serif;
+  text-align: center;
+  animation: fadeInUp 0.4s ease-in-out both;
+  letter-spacing: 1px;
+  font-weight: 500;
+  text-align: left;
+}
+
+.login-mensagem.erro {
+  color: #e74c3c;
+}
+
+.login-mensagem.sucesso {
+  color: #27ae60;
+}
+
+.fade-out {
+  animation: fadeOut 0.5s forwards ease-in;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
