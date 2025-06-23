@@ -11,7 +11,7 @@ import LinhaDetalhes from './linhas/horarios/LinhaDetalhes';
 import Itinerarios from './linhas/itinerarios/ItinerarioDetalhes';
 import Cadastro from './main/components/Cadastro';
 import Contato from './main/components/Contato';
-import Login from './pages/admin/Login.js';
+import Login from './pages/admin/login/Login';
 
 function App() {
   const location = useLocation();

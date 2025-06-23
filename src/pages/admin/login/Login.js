@@ -20,23 +20,29 @@ const Login = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  // Definindo credenciais provisórias
-
-  // eslint-disable-next-line no-unused-vars
-  const USUARIO_PADRAO = "admin";
-  // eslint-disable-next-line no-unused-vars
-  const SENHA_PADRAO = "1234";
-
   const [mensagem, setMensagem] = useState("");
   const [tipoMensagem, setTipoMensagem] = useState(""); // 'erro' ou 'sucesso'
 
-  const handleLogin = () => {
-  if (username === "admin" && password === "1234") {
-    setMensagem("Login realizado com sucesso!");
-    setTipoMensagem("sucesso");
-    // Aqui você poderia redirecionar ou guardar um token
-  } else {
-    setMensagem("Usuário ou senha incorretos.");
+  const handleLogin = async () => {
+  try {
+    const response = await fetch("http://localhost:5000/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username, password })
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      setMensagem(data.message);
+      setTipoMensagem("sucesso");
+      // Salvar token aqui, se quiser
+    } else {
+      setMensagem(data.message);
+      setTipoMensagem("erro");
+    }
+  } catch (error) {
+    setMensagem("Erro ao conectar com o servidor.");
     setTipoMensagem("erro");
   }
 };
