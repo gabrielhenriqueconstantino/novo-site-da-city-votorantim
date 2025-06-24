@@ -1,17 +1,22 @@
 import { useState } from 'react';
-import './main/styles/global.css';
-import './main/styles/App.css';
+import './pages/user/main/styles/global.css';
+import './pages/user/main/styles/App.css';
 import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 
-import Header from './main/components/Header';
-import Banner from './main/components/Banner';
-import Hero from './main/components/Hero';
-import Footer from './main/components/Footer';
-import LinhaDetalhes from './linhas/horarios/LinhaDetalhes';
-import Itinerarios from './linhas/itinerarios/ItinerarioDetalhes';
-import Cadastro from './main/components/Cadastro';
-import Contato from './main/components/Contato';
+import Header from './pages/user/main/components/Header';
+import Banner from './pages/user/main/components/Banner';
+import Hero from './pages/user/main/components/Hero';
+import Footer from './pages/user/main/components/Footer';
+import LinhaDetalhes from './pages/user/linhas/horarios/LinhaDetalhes';
+import Itinerarios from './pages/user/linhas/itinerarios/ItinerarioDetalhes';
+import Cadastro from './pages/user/main/components/Cadastro';
+import Contato from './pages/user/main/components/Contato';
+
+//do painel administrativo
 import Login from './pages/admin/login/Login';
+import Dashboard from './pages/admin/dashboard/layout/Dashboard';
+import PrivateRoute from './pages/admin/PrivateRoute';
+
 
 function App() {
   const location = useLocation();
@@ -19,14 +24,17 @@ function App() {
   const [showItinerarios, setShowItinerarios] = useState(false);
 
   // Verifica se a rota atual é '/cadastro' ou '/contato' ou '/login'
-  const shouldShowBanner = !['/cadastro', '/contato', '/login'].includes(location.pathname);
+  const shouldShowBanner = !['/cadastro', '/contato', '/login', '/admin'].includes(location.pathname);
   
   // Verifica se a rota atual NÃO é '/login' para mostrar o Footer
-  const shouldShowFooter = !['/login'].includes(location.pathname);
+  const shouldShowFooter = !['/login', '/admin'].includes(location.pathname);
+  
+  // Verifica se a rota atual NÃO começa com '/admin' para mostrar o Header
+  const shouldShowHeader = !location.pathname.startsWith('/admin');
 
   return (
     <div className="App">
-      <Header setShowItinerarios={setShowItinerarios} />
+      {shouldShowHeader && <Header setShowItinerarios={setShowItinerarios} />}
       {shouldShowBanner && <Banner />}
       <Routes>
         <Route path="/" element={<Navigate to="/horarios" replace />} />
@@ -37,6 +45,14 @@ function App() {
         <Route path="/cadastro" element={<Cadastro />} />
         <Route path="/contato" element={<Contato />} />
         <Route path="/login" element={<Login />} />
+        <Route
+          path="/admin"
+          element={
+            <PrivateRoute>
+              <Dashboard />
+            </PrivateRoute>
+          }
+        />
       </Routes>
       {shouldShowFooter && <Footer />}
     </div>
