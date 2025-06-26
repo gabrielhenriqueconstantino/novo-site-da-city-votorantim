@@ -1,40 +1,43 @@
-/* Variáveis de cor */
 :root {
-  --header-bg: #ffffff;
-  --header-text: #1e293b;
-  --header-border: #e2e8f0;
-  --primary-color: #3b82f6;
+  --header-bg: #1e293b;
+  --header-text: #f1f5f9;
+  --header-border: #334155;
+  --primary-color: #60a5fa;
+  --primary-dark: #3b82f6;
   --notification-badge: #ef4444;
-  --search-bg: #f8fafc;
-  --search-text: #64748b;
-  --user-role-text: #64748b;
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --hover-bg: rgba(56, 139, 253, 0.2);
+  --active-bg: rgba(56, 139, 253, 0.4);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --radius-sm: 8px;
+  --radius-md: 12px;
 }
 
 /* Reset e fontes */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 .dashboard-header {
   display: flex;
   align-items: center;
-  justify-content: flex-end; /* Alterado de space-between para flex-end */
-  padding: 0 1.5rem;
-  height: 90px;
-  background-color: #1e293b;
+  justify-content: flex-end;
+  padding: 0 2rem;
+  height: 80px;
+  background-color: var(--header-bg);
   border-bottom: 1px solid var(--header-border);
   box-shadow: var(--shadow-sm);
   font-family: 'Inter', sans-serif;
   position: sticky;
   top: 0;
   z-index: 50;
-  color: #f1f5f9;
+  color: var(--header-text);
 }
 
 /* Lado direito */
 .header-right {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 .notification-button {
@@ -44,19 +47,27 @@
   cursor: pointer;
   color: var(--header-text);
   padding: 0.5rem;
-  border-radius: 8px;
-  transition: background 0.2s ease;
-  color: #e0f2fe;
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .notification-button:hover {
-  background: linear-gradient(135deg, rgba(50, 127, 252, 0.637) 0%, rgba(24, 55, 104, 0.699) 100%);
+  background: var(--hover-bg);
+  transform: translateY(-1px);
+}
+
+.notification-button.active {
+  background: var(--active-bg);
+  color: var(--primary-color);
 }
 
 .notification-badge {
   position: absolute;
-  top: -2px;
-  right: -2px;
+  top: 2px;
+  right: 2px;
   background-color: var(--notification-badge);
   color: white;
   border-radius: 50%;
@@ -67,6 +78,48 @@
   justify-content: center;
   font-size: 0.6rem;
   font-weight: 600;
+  transform: scale(1);
+  transition: var(--transition);
+}
+
+.notification-button:hover .notification-badge {
+  transform: scale(1.1);
+}
+
+.notification-pulse {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: var(--primary-color);
+  border-radius: 50%;
+  top: 6px;
+  right: 6px;
+  opacity: 0;
+  animation: pulse 2s infinite;
+}
+
+.notification-button:hover .notification-pulse {
+  opacity: 1;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+  }
+}
+
+.logout-button:hover {
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.1);
 }
 
 .user-profile {
@@ -74,24 +127,35 @@
   align-items: center;
   gap: 0.75rem;
   cursor: pointer;
-  padding: 0.25rem 0.5rem;
-  border-radius: 12px;
-  transition: background 0.2s ease;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius-md);
+  transition: var(--transition);
+  position: relative;
 }
 
 .user-profile:hover {
-  background: linear-gradient(135deg, rgba(50, 127, 252, 0.637) 0%, rgba(24, 55, 104, 0.699) 100%);
+  background: var(--hover-bg);
+}
+
+.user-profile.open {
+  background: var(--active-bg);
 }
 
 .avatar {
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
-  background-color: #e0f2fe;
+  background-color: rgba(224, 242, 254, 0.2);
   color: var(--primary-color);
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: var(--transition);
+}
+
+.user-profile:hover .avatar {
+  background-color: rgba(224, 242, 254, 0.3);
+  transform: scale(1.05);
 }
 
 .user-details {
@@ -102,32 +166,103 @@
 .user-name {
   font-size: 0.875rem;
   font-weight: 500;
-  color: aliceblue;
+  color: var(--header-text);
 }
 
 .user-role {
   font-size: 0.75rem;
-  color: rgba(240, 248, 255, 0.582);
+  color: rgba(240, 248, 255, 0.6);
+  transition: var(--transition);
+}
+
+.user-profile:hover .user-role {
+  color: var(--primary-color);
 }
 
 .dropdown-icon {
-  color: var(--user-role-text);
+  color: rgba(240, 248, 255, 0.6);
+  transition: var(--transition);
 }
 
-/* Responsividade */
-@media (max-width: 1024px) {
-  .header-center {
-    display: none;
+.dropdown-icon.rotate {
+  transform: rotate(180deg);
+}
+
+.user-profile:hover .dropdown-icon {
+  color: var(--primary-color);
+}
+
+.profile-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 200px;
+  background-color: var(--header-bg);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-md);
+  padding: 0.5rem 0;
+  margin-top: 0.5rem;
+  z-index: 100;
+  animation: fadeIn 0.2s ease-out;
+  border: 1px solid var(--header-border);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
+.dropdown-item {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  transition: var(--transition);
+  color: var(--header-text);
+}
+
+.dropdown-item:hover {
+  background: var(--hover-bg);
+  color: var(--primary-color);
+}
+
+.dropdown-divider {
+  height: 1px;
+  background-color: var(--header-border);
+  margin: 0.5rem 0;
+}
+
+.dropdown-item.logout {
+  color: #ef4444;
+}
+
+.dropdown-item.logout:hover {
+  background: rgba(239, 68, 68, 0.1);
+}
+
+/* Responsividade */
 @media (max-width: 768px) {
-  .dashboard-subtitle,
+  .dashboard-header {
+    padding: 0 1rem;
+  }
+  
+  .header-right {
+    gap: 0.5rem;
+  }
+  
+  .user-name {
+    display: none;
+  }
+  
   .user-role {
     display: none;
   }
   
-  .header-left {
-    min-width: auto;
+  .user-profile {
+    padding: 0.5rem;
   }
 }

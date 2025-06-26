@@ -23,7 +23,7 @@
   text-decoration: none;
 }
 
-.header-container {
+.city-header-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
@@ -37,7 +37,7 @@
   position: relative;
 }
 
-.logo-container {
+.city-logo-container {
   display: flex;
   align-items: center;
 }

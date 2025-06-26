@@ -48,10 +48,11 @@ const Login = () => {
       const data = await response.json();
 
       if (response.ok && data.success) {
-        localStorage.setItem("auth", "true");
-      window.location.href = "/admin";
-      
-      } else {
+          localStorage.setItem("auth", "true");
+          localStorage.setItem("user", JSON.stringify(data.usuario)); // ⬅️ salva nome, email, role etc
+          window.location.href = "/admin";
+        } else {
+          
         setMensagem(data.message || "Usuário ou senha inválidos.");
         setTipoMensagem("erro");
       }
@@ -88,7 +89,7 @@ const Login = () => {
             </span>
             <input
               type="text"
-              placeholder="USUÁRIO"
+              placeholder="USUÁRIO OU E-MAIL"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               className="input-with-icon"

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { 
   FaHome, 
@@ -25,8 +25,10 @@ const SidebarItem = ({ to, icon: Icon, label, collapsed, active }) => (
   </li>
 );
 
-const Sidebar = ({ collapsed, toggleSidebar }) => {
+const Sidebar = () => {
   const location = useLocation();
+  const [collapsed, setCollapsed] = useState(true);
+  const [initialLoad, setInitialLoad] = useState(true);
 
   const menuItems = [
     { to: "/admin", icon: FaHome, label: "Início" },
@@ -36,8 +38,23 @@ const Sidebar = ({ collapsed, toggleSidebar }) => {
     { to: "/reports", icon: FaHeadset, label: "Reclamações" },
   ];
 
+  const toggleSidebar = () => {
+    setCollapsed(!collapsed);
+    setInitialLoad(false);
+  };
+
+  useEffect(() => {
+    // Abre a sidebar automaticamente após 500ms do carregamento
+    const timer = setTimeout(() => {
+      setCollapsed(false);
+      setInitialLoad(false);
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <aside className={`sidebar ${collapsed ? 'collapsed' : ''}`}>
+    <aside className={`sidebar ${collapsed ? 'collapsed' : ''} ${initialLoad ? 'initial-load' : ''}`}>
       {/* Header da Sidebar */}
       <div className={`sidebar-header ${collapsed ? 'collapsed' : ''}`}>
         <div className="logo-container">
@@ -74,9 +91,14 @@ const Sidebar = ({ collapsed, toggleSidebar }) => {
         </ul>
         
         <div className="sidebar-footer">
-          <Link to="/logout" className="sidebar-link">
+          <Link to="/horarios" className="sidebar-link">
             <div className="sidebar-icon-container">
-              <FaSignOutAlt className="sidebar-icon" />
+              <FaSignOutAlt className="sidebar-icon"
+              onClick={() => {
+                  localStorage.clear();
+                  window.location.href = "/login";
+                  }}
+              />
             </div>
             {!collapsed && <span className="sidebar-label">Sair</span>}
           </Link>

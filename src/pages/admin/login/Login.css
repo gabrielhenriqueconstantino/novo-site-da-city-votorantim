@@ -299,6 +299,36 @@
   animation-delay: 0.9s;
 }
 
+/* Efeito de brilho ao passar o mouse */
+.login-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+  );
+  transition: 0.5s;
+  z-index: -1;
+}
+
+/* Efeito de hover - Gradiente fixo para todos os botões */
+.login-button:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 16px rgba(0, 27, 77, 0.4);
+  background: linear-gradient(135deg, #001b4d, #2193b0);
+}
+
+
+
+/* Efeito de clique */
+.login-button:active {
+  transform: translateY(1px) scale(0.92);
+  box-shadow: 0 2px 4px rgba(0, 27, 77, 0.4);
+}
+
 .login-options {
   display: flex;
   justify-content: space-between;

@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import Sidebar from '../components/Sidebar';
 import Header from '../components/Header';
+
+import AutoLogout from '../../AutoLogout';
+
 import './Dashboard.css';
 
 const Dashboard = ({ children }) => {
@@ -12,6 +15,7 @@ const Dashboard = ({ children }) => {
 
   return (
     <div className="dashboard-container">
+      <AutoLogout />
       <Header />
       <div className="dashboard-body">
         <Sidebar collapsed={collapsed} toggleSidebar={toggleSidebar} />

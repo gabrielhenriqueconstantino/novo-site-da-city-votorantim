@@ -36,9 +36,9 @@ const Header = ({ setShowItinerarios }) => {
 
   return (
     <header className={`header ${scrolled ? 'scrolled' : ''}`}>
-      <div className="header-container">
+      <div className="city-header-container">
         <nav className="nav">
-          <div className="logo-container">
+          <div className="city-logo-container">
             <Link to="/horarios" onClick={handleHorariosClick}>
               <img 
                 src="http://votorantim.citymais.com.br/wp-content/uploads/2020/07/logo-city3.png" 
