@@ -31,6 +31,7 @@
   top: 0;
   z-index: 50;
   color: var(--header-text);
+  max-width: 100%;
 }
 
 /* Lado direito */

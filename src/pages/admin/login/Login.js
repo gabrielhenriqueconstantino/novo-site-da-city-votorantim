@@ -50,7 +50,7 @@ const Login = () => {
       if (response.ok && data.success) {
           localStorage.setItem("auth", "true");
           localStorage.setItem("user", JSON.stringify(data.usuario)); // ⬅️ salva nome, email, role etc
-          window.location.href = "/admin";
+          window.location.href = "/admin/home";
         } else {
           
         setMensagem(data.message || "Usuário ou senha inválidos.");

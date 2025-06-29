@@ -7,25 +7,26 @@
 .dashboard-body {
   display: flex;
   flex: 1;
+  /* O padding-left empurra o conteúdo, mas não o Header */
+  padding-left: 260px;
+  transition: padding-left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+.dashboard-body.collapsed {
+  padding-left: 80px;
 }
 
 .main-content {
   flex: 1;
-  padding: 30px;
   background: #f5f6fa;
-  transition: margin-left 0.3s ease;
-}
-
-.main-content.collapsed {
-  margin-left: 80px;
+  transition: margin-left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  min-width: 0;
 }
 
 @media (max-width: 768px) {
-  .main-content {
-    margin-left: 0;
-  }
-
-  .main-content.collapsed {
-    margin-left: 80px;
+  .dashboard-body,
+  .dashboard-body.collapsed {
+    padding-left: 0;
   }
 }

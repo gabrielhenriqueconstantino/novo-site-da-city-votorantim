@@ -16,7 +16,7 @@ import Contato from './pages/user/main/components/Contato';
 import Login from './pages/admin/login/Login';
 import Dashboard from './pages/admin/dashboard/layout/Dashboard';
 import PrivateRoute from './pages/admin/PrivateRoute';
-
+import Summary from './pages/admin/dashboard/components/Summary';
 
 function App() {
   const location = useLocation();
@@ -24,10 +24,10 @@ function App() {
   const [showItinerarios, setShowItinerarios] = useState(false);
 
   // Verifica se a rota atual é '/cadastro' ou '/contato' ou '/login'
-  const shouldShowBanner = !['/cadastro', '/contato', '/login', '/admin'].includes(location.pathname);
+  const shouldShowBanner = !['/cadastro', '/contato', '/login', '/admin', '/admin/home'].includes(location.pathname);
   
   // Verifica se a rota atual NÃO é '/login' para mostrar o Footer
-  const shouldShowFooter = !['/login', '/admin'].includes(location.pathname);
+  const shouldShowFooter = !['/login', '/admin', '/admin/home'].includes(location.pathname);
   
   // Verifica se a rota atual NÃO começa com '/admin' para mostrar o Header
   const shouldShowHeader = !location.pathname.startsWith('/admin');
@@ -52,7 +52,12 @@ function App() {
               <Dashboard />
             </PrivateRoute>
           }
-        />
+        >
+          <Route index element={<Navigate to="home" replace />} />
+          <Route path="home" element={<Summary />} />
+          {/* Outras rotas do admin podem ser adicionadas aqui */}
+        </Route>
+        
       </Routes>
       {shouldShowFooter && <Footer />}
     </div>
