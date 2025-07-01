@@ -20,7 +20,7 @@ const Dashboard = () => {
         <Sidebar collapsed={collapsed} toggleSidebar={toggleSidebar} />
         <main className="main-content">
           <Outlet />
-          <Cards />
+          
         </main>
       </div>
     </div>

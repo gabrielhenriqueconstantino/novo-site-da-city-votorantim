@@ -89,11 +89,13 @@
 }
 
 .chart-container {
-  background: white;
+  background: transparent;
   border-radius: 12px;
   padding: 24px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px rgba(9, 226, 56, 0.1);
   transition: all 0.3s ease;
+  border: 0.6mm solid #10B981 ;
+  cursor: pointer;
 }
 
 .chart-container:hover {
@@ -104,31 +106,152 @@
   font-size: 16px;
   font-weight: 600;
   margin-bottom: 20px;
-  color: #374151;
+  color: #ffffff;
   text-align: center;
 }
 
-/* Responsividade */
+/* Ajustes para mobile considerando sidebar */
 @media (max-width: 768px) {
-  .summary-grid {
-    grid-template-columns: 1fr 1fr;
+  .summary-container {
+    padding: 12px 12px 12px 60px; /* Mais padding à esquerda para a sidebar */
+    margin-bottom: 20px;
+    margin-left: 56px; /* Remove qualquer margem à esquerda */
+    width: calc(100% - 60px); /* Considera a largura da sidebar */
+    box-sizing: border-box;
   }
-  
+
+  .summary-title {
+    font-size: 18px;
+    margin-bottom: 16px;
+    text-align: left; /* Alinhamento à esquerda para melhor fluxo */
+    padding-right: 8px;
+  }
+
+  .summary-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .summary-card {
+    padding: 14px;
+    min-height: 70px;
+    margin-right: 8px; /* Evita que encoste na borda */
+  }
+
+  .summary-text {
+    flex: 1; /* Ocupa mais espaço */
+  }
+
+  .summary-label {
+    font-size: 12px;
+    margin-bottom: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .summary-value {
+    font-size: 18px;
+  }
+
+  .summary-icon {
+    font-size: 20px;
+    margin-left: 8px; /* Espaço entre texto e ícone */
+  }
+
   .charts-section {
     grid-template-columns: 1fr;
+    gap: 14px;
+    margin-top: 12px;
   }
-  
+
   .chart-container {
+    padding: 14px;
     width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 14px;
+    border-width: 0.4mm; /* Borda mais fina */
+  }
+
+  .chart-title {
+    font-size: 14px;
+    margin-bottom: 12px;
+    text-align: left; /* Alinhamento à esquerda */
+    padding-left: 4px;
+  }
+
+  /* Ajustes específicos para os gráficos com sidebar */
+  .recharts-wrapper {
+    width: 100% !important;
+    margin-left: -10px; /* Compensa o espaço da sidebar */
+  }
+
+  /* Gráfico de barras - ajuste de eixos */
+  .recharts-y-axis {
+    width: 30px !important; /* Menor espaço para eixo Y */
+  }
+
+  .recharts-cartesian-axis-tick {
+    font-size: 10px !important;
+  }
+
+  /* Gráfico de pizza - ajuste de legenda */
+  .recharts-legend-wrapper {
+    bottom: -5px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 100% !important;
+  }
+
+  .recharts-legend-item {
+    display: inline-flex !important;
+    margin-right: 6px !important;
+    font-size: 10px !important;
+  }
+
+  .recharts-pie-label {
+    font-size: 9px !important;
+    transform: scale(0.8); /* Labels menores */
   }
 }
 
 @media (max-width: 480px) {
-  .summary-grid {
-    grid-template-columns: 1fr;
+  .summary-container {
+    padding-left: 56px; /* Sidebar um pouco menor */
+    width: calc(100% - 56px);
   }
-  
-  .summary-title {
-    font-size: 20px;
+
+  .summary-card {
+    padding: 12px 10px;
+    min-height: 60px;
+  }
+
+  .summary-label {
+    font-size: 11px;
+  }
+
+  .summary-value {
+    font-size: 16px;
+  }
+
+  .summary-icon {
+    font-size: 18px;
+  }
+
+  .chart-container {
+    padding: 12px 10px;
+  }
+
+  /* Ajustes finos para gráficos em telas muito pequenas */
+  .recharts-surface {
+    transform: scale(0.95);
+    transform-origin: left center;
+  }
+
+  .recharts-legend-item {
+    font-size: 9px !important;
+    margin-right: 4px !important;
   }
 }
+

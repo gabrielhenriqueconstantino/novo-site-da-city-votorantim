@@ -12,7 +12,7 @@
 
 /* Hero Section - Isolado */
 .contato-hero {
-  background: linear-gradient(135deg, var(--primary-color) 0%, #005fa3 100%);
+  background: linear-gradient(135deg, var(--primaria-color) 0%, #005fa3 100%);
   color: var(--white);
   padding: 4rem 1rem;
   text-align: center;
@@ -61,7 +61,7 @@
 }
 
 .contato-info h2 {
-  color: var(--primary-color);
+  color: var(--primaria-color);
   margin-bottom: 1.2rem;
   font-size: 1.3rem;
   font-weight: 600;
@@ -89,7 +89,7 @@
 }
 
 .info-accordion-header h3 {
-  color: var(--primary-color);
+  color: var(--primaria-color);
   font-size: 1rem;
   font-weight: 600;
   margin: 0;
@@ -104,7 +104,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--primary-color);
+  color: var(--primaria-color);
   margin-right: 0.75rem;
   flex-shrink: 0;
 }
@@ -159,7 +159,7 @@
 }
 
 .contato-form-container h2 {
-  color: var(--primary-color);
+  color: var(--primaria-color);
   margin-bottom: 1.2rem;
   font-size: 1.3rem;
   font-weight: 600;
@@ -207,7 +207,7 @@
 .contato-form .form-group select:focus,
 .contato-form .form-group textarea:focus {
   outline: none;
-  border-color: var(--primary-color);
+  border-color: var(--primaria-color);
   box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.1);
 }
 
@@ -312,7 +312,7 @@
 }
 
 .contato-success-card h2 {
-  color: var(--primary-color);
+  color: var(--primaria-color);
   margin-bottom: 0.8rem;
   font-size: 1.4rem;
 }
@@ -325,7 +325,7 @@
 }
 
 .contato-success-button {
-  background-color: var(--primary-color);
+  background-color: var(--primaria-color);
   color: white;
   border: none;
   padding: 0.8rem 1.5rem;

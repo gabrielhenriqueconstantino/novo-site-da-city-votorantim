@@ -7,11 +7,19 @@ import "../styles/Cards.css";
 const PEXELS_API_KEY = "8Q6JEcA0dmkqOutlr97KXsOHTovvjXqMvE88G033HYdxlJBPzt8ttEsW";
 const SEARCH_QUERY = "modern city bus exterior";
 
-// Gere as linhas fora do componente para garantir consistência
 const linhas = Object.entries(horariosData.linhas).map(([id, data]) => ({
   id,
   nome: data.nome
 }));
+
+const shuffleArray = (array) => {
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+};
 
 const Cards = () => {
   const [backgrounds, setBackgrounds] = useState({});
@@ -29,11 +37,13 @@ const Cards = () => {
         );
 
         const photos = res.data.photos;
+        const shuffledPhotos = shuffleArray(photos);
         const imgs = {};
 
-        linhas.forEach((linha) => {
-          const randomIndex = Math.floor(Math.random() * photos.length);
-          imgs[linha.id] = photos[randomIndex]?.src?.medium;
+        linhas.forEach((linha, index) => {
+          // Garante que não exceda o número de imagens disponíveis
+          const photo = shuffledPhotos[index % shuffledPhotos.length];
+          imgs[linha.id] = photo?.src?.medium;
         });
 
         setBackgrounds(imgs);
@@ -43,7 +53,7 @@ const Cards = () => {
     };
 
     fetchImages();
-  }, []); // 👈 Dependência vazia: executa só uma vez!
+  }, []);
 
   return (
     <div className="cards-container">
@@ -60,7 +70,6 @@ const Cards = () => {
               backgroundImage: `url(${backgrounds[linha.id]})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
-              borderRadius: "8px",
               minHeight: "100px"
             }}
           />
