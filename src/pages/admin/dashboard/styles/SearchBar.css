@@ -11,8 +11,8 @@
 .busca-bar {
   position: relative;
   width: 100%;
-  border: 2px solid skyblue;
-  border-radius: 10px;
+  border: 2px solid rgba(59, 131, 246, 0.678);
+  border-radius: 25px;
   padding: 15px 0;
   display: flex;
   align-items: center;
@@ -45,9 +45,9 @@
   box-shadow: 0 2px 15px rgba(74, 144, 226, 0.3);
 }
 
-.search-icon {
+.busca-icon {
   position: absolute;
-  margin-left: 15px;
+  margin-left: 27px;
   top: 50%;
   transform: translateY(-50%);
   color: #777;

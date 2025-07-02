@@ -1,17 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Pencil, Trash2 } from "lucide-react";
-import horariosData from "../../../user/data/horarios.json";
 import SearchBar from "../components/SearchBar";
+import HorarioEditor from "../components/HorarioEditor";
 import "../styles/Cards.css";
 
 const PEXELS_API_KEY = "8Q6JEcA0dmkqOutlr97KXsOHTovvjXqMvE88G033HYdxlJBPzt8ttEsW";
 const SEARCH_QUERY = "modern urban city bus exterior";
-
-const linhas = Object.entries(horariosData.linhas).map(([id, data]) => ({
-  id,
-  nome: data.nome
-}));
 
 const shuffleArray = (array) => {
   const shuffled = [...array];
@@ -23,9 +18,43 @@ const shuffleArray = (array) => {
 };
 
 const Cards = () => {
+  const [linhas, setLinhas] = useState([]);
+  const [dadosHorarios, setDadosHorarios] = useState(null);
   const [backgrounds, setBackgrounds] = useState({});
   const [searchTerm, setSearchTerm] = useState("");
-  const [filteredLinhas, setFilteredLinhas] = useState(linhas);
+  const [filteredLinhas, setFilteredLinhas] = useState([]);
+  const [editingLinha, setEditingLinha] = useState(null);
+  const [showEditor, setShowEditor] = useState(false);
+
+  useEffect(() => {
+    const fetchLinhas = async () => {
+      try {
+        const res = await fetch('http://localhost:5000/api/horarios');
+        const data = await res.json();
+
+        const linhasFormatadas = Object.entries(data.linhas).map(([id, info]) => ({
+          id,
+          nome: info.nome
+        }));
+
+        setLinhas(linhasFormatadas);
+        setFilteredLinhas(linhasFormatadas);
+        setDadosHorarios(data);
+      } catch (error) {
+        console.error("Erro ao carregar as linhas:", error);
+      }
+    };
+
+    fetchLinhas();
+  }, []);
+
+  useEffect(() => {
+    const results = linhas.filter((linha) =>
+      linha.id.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      linha.nome.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setFilteredLinhas(results);
+  }, [searchTerm, linhas]);
 
   useEffect(() => {
     const fetchImages = async () => {
@@ -55,15 +84,33 @@ const Cards = () => {
     };
 
     fetchImages();
-  }, []);
+  }, [linhas]);
 
-  useEffect(() => {
-    const results = linhas.filter(linha =>
-      linha.id.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      linha.nome.toLowerCase().includes(searchTerm.toLowerCase())
+  const handleSortAsc = () => {
+    setFilteredLinhas(prev =>
+      [...prev].sort((a, b) => a.id.localeCompare(b.id, "pt-BR", { numeric: true }))
     );
-    setFilteredLinhas(results);
-  }, [searchTerm]);
+  };
+
+  const handleSortDesc = () => {
+    setFilteredLinhas(prev =>
+      [...prev].sort((a, b) => b.id.localeCompare(a.id, "pt-BR", { numeric: true }))
+    );
+  };
+
+  const handleShuffle = () => {
+    setFilteredLinhas(prev => shuffleArray(prev));
+  };
+
+  const handleEditClick = (linhaId) => {
+    setEditingLinha(linhaId);
+    setShowEditor(true);
+  };
+
+  const handleCloseEditor = () => {
+    setShowEditor(false);
+    setEditingLinha(null);
+  };
 
   return (
     <div className="cards-page">
@@ -71,8 +118,19 @@ const Cards = () => {
         value={searchTerm}
         onChange={setSearchTerm}
         placeholder="Pesquisar linhas..."
+        onSortAsc={handleSortAsc}
+        onSortDesc={handleSortDesc}
+        onShuffle={handleShuffle}
       />
-      
+
+      {showEditor && editingLinha && dadosHorarios && (
+        <HorarioEditor
+          linhaId={editingLinha}
+          dadosHorarios={dadosHorarios}
+          onClose={handleCloseEditor}
+        />
+      )}
+
       <div className="cards-container">
         {filteredLinhas.map((linha) => (
           <div key={linha.id} className="card">
@@ -92,9 +150,14 @@ const Cards = () => {
             />
 
             <div className="card-footer">
-              <button className="btn-icon" title="Editar">
+              <button 
+                className="btn-icon" 
+                title="Editar" 
+                onClick={() => handleEditClick(linha.id)}
+              >
                 <Pencil size={19} />
               </button>
+
               <button className="btn-icon" title="Excluir">
                 <Trash2 size={19} />
               </button>
