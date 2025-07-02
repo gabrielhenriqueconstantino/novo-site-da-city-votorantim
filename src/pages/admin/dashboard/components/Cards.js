@@ -25,6 +25,7 @@ const Cards = () => {
   const [filteredLinhas, setFilteredLinhas] = useState([]);
   const [editingLinha, setEditingLinha] = useState(null);
   const [showEditor, setShowEditor] = useState(false);
+  const [loaded, setLoaded] = useState(false); // estado para controlar animação
 
   useEffect(() => {
     const fetchLinhas = async () => {
@@ -40,6 +41,7 @@ const Cards = () => {
         setLinhas(linhasFormatadas);
         setFilteredLinhas(linhasFormatadas);
         setDadosHorarios(data);
+        setLoaded(true); // quando os dados carregam, ativa animação
       } catch (error) {
         console.error("Erro ao carregar as linhas:", error);
       }
@@ -86,31 +88,24 @@ const Cards = () => {
     fetchImages();
   }, [linhas]);
 
+  // Funções de ordenação, busca, etc
+  // Função para ordenar de A-Z (nome da linha)
   const handleSortAsc = () => {
-    setFilteredLinhas(prev =>
-      [...prev].sort((a, b) => a.id.localeCompare(b.id, "pt-BR", { numeric: true }))
-    );
+    const sorted = [...filteredLinhas].sort((a, b) => a.nome.localeCompare(b.nome));
+    setFilteredLinhas(sorted);
   };
 
+  // Função para ordenar de Z-A (nome da linha)
   const handleSortDesc = () => {
-    setFilteredLinhas(prev =>
-      [...prev].sort((a, b) => b.id.localeCompare(a.id, "pt-BR", { numeric: true }))
-    );
+    const sorted = [...filteredLinhas].sort((a, b) => b.nome.localeCompare(a.nome));
+    setFilteredLinhas(sorted);
   };
 
+  // Função para embaralhar as linhas
   const handleShuffle = () => {
-    setFilteredLinhas(prev => shuffleArray(prev));
+    setFilteredLinhas(shuffleArray(filteredLinhas));
   };
 
-  const handleEditClick = (linhaId) => {
-    setEditingLinha(linhaId);
-    setShowEditor(true);
-  };
-
-  const handleCloseEditor = () => {
-    setShowEditor(false);
-    setEditingLinha(null);
-  };
 
   return (
     <div className="cards-page">
@@ -127,13 +122,17 @@ const Cards = () => {
         <HorarioEditor
           linhaId={editingLinha}
           dadosHorarios={dadosHorarios}
-          onClose={handleCloseEditor}
+          onClose={() => { setShowEditor(false); setEditingLinha(null); }}
         />
       )}
 
       <div className="cards-container">
-        {filteredLinhas.map((linha) => (
-          <div key={linha.id} className="card">
+        {filteredLinhas.map((linha, index) => (
+          <div
+            key={linha.id}
+            className={`card ${loaded ? "fade-in" : ""}`}
+            style={{ animationDelay: `${index * 100}ms` }} // delay progressivo
+          >
             <div className="card-header">
               <div className="linha-id">{linha.id}</div>
               <div className="linha-nome">{linha.nome}</div>
@@ -150,10 +149,13 @@ const Cards = () => {
             />
 
             <div className="card-footer">
-              <button 
-                className="btn-icon" 
-                title="Editar" 
-                onClick={() => handleEditClick(linha.id)}
+              <button
+                className="btn-icon"
+                title="Editar"
+                onClick={() => {
+                  setEditingLinha(linha.id);
+                  setShowEditor(true);
+                }}
               >
                 <Pencil size={19} />
               </button>

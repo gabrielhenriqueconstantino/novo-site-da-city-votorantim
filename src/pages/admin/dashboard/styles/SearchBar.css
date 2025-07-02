@@ -6,6 +6,8 @@
   top: 0;
   padding: 20px;
   background-color: #111827;
+  transition: padding 0.3s;
+  z-index: 900;
 }
 
 .busca-bar {
@@ -16,10 +18,14 @@
   padding: 15px 0;
   display: flex;
   align-items: center;
+  background: #1a2233;
+  min-width: 0;
+  transition: padding 0.3s;
 }
 
 .busca-input {
   width: 50%;
+  min-width: 0;
   padding: 12px 20px 12px 40px;
   border-radius: 25px;
   border: 2px solid #ddd;
@@ -78,4 +84,71 @@
   background-color: rgba(135, 206, 235, 0.1);
   border-radius: 50%;
   transform: scale(1.1);
+}
+
+
+
+/* Responsividade para tablets e celulares */
+@media (max-width: 900px) {
+  .busca-container {
+    padding: 12px 10px 12px 90px; /* espaço para sidebar colapsada */
+  }
+  .busca-bar {
+    padding: 10px 0;
+  }
+  .busca-input {
+    width: 70%;
+    font-size: 15px;
+    padding-left: 38px;
+  }
+}
+
+@media (max-width: 600px) {
+  .busca-container {
+    padding: 8px 5px 8px 5px;
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    z-index: 900;
+  }
+  .busca-bar {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 8px 0;
+    gap: 8px;
+  }
+  .busca-input {
+    width: 75%;
+    margin-left: 5px;
+    font-size: 14px;
+    min-width: 0;
+  }
+
+  .busca-icon {
+    position: absolute;
+    margin-left: 14px !important;
+    top: 28%;
+    transform: translateY(-50%);
+    color: #777;
+  }
+
+  .sort-icons {
+    margin: 0 auto 0 0;
+    justify-content: flex-end !important;
+    gap: 4px;
+  }
+}
+
+/* Ajuste para não ficar atrás da sidebar em telas pequenas */
+@media (max-width: 600px) {
+  .busca-container {
+    padding: 8px 5px 8px 5px;
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 75%;
+    z-index: 900;
+    padding-left: 90px; /* Garante espaço para a sidebar colapsada */
+  }
 }

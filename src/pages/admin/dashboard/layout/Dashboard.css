@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  background-color: #111827
 }
 
 .dashboard-body {
@@ -10,6 +11,7 @@
   /* O padding-left empurra o conteúdo, mas não o Header */
   padding-left: 260px;
   transition: padding-left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: #111827
 }
 
 
@@ -23,6 +25,7 @@
   transition: margin-left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   min-width: 0;
   max-height: 100vh;
+  background-color: #111827
 }
 
 @media (max-width: 768px) {

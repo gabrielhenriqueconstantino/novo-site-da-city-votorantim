@@ -7,6 +7,25 @@
   background-color: #111827;
 }
 
+/* Estado inicial: invisível e deslocado pra baixo */
+.card.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation-fill-mode: forwards;
+  animation-name: fadeInUp;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-out;
+}
+
+/* Keyframes para fade + subida */
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
 .card {
   width: 280px;
   height: 280px;
@@ -98,4 +117,55 @@
   background-color: rgba(135, 206, 235, 0.1);
   border-radius: 50%;
   transform: scale(1.1);
+}
+
+/* ...existing code... */
+
+/* Responsividade para tablets */
+@media (max-width: 900px) {
+  .cards-container {
+    gap: 18px;
+    padding: 8px;
+  }
+  .card {
+    width: 90vw;
+    min-width: 220px;
+    max-width: 400px;
+  }
+}
+
+/* Responsividade para celulares */
+@media (max-width: 768px) {
+  .cards-container {
+    flex-direction: column !important;
+    align-items: center;
+    justify-content: center !important;
+    gap: 12px;
+    padding-left: 86px;
+  }
+
+  .card {
+    width: 92%;
+    min-width: 0;
+    max-width: 99vw;
+    height: auto;
+    margin: 0;
+  }
+  .card-header,
+  .card-footer {
+    padding: 10px 8px;
+    font-size: 13px;
+  }
+  .linha-nome {
+    max-width: 55vw;
+    font-size: 12px;
+  }
+  .linha-id {
+    font-size: 12px;
+    padding: 3px 7px;
+  }
+  .card-body {
+    padding: 10px 4px;
+    min-height: 80px;
+  }
 }
