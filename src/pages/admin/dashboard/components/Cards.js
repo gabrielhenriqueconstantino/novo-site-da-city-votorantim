@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Pencil, Trash2 } from "lucide-react";
 import horariosData from "../../../user/data/horarios.json";
+import SearchBar from "../components/SearchBar";
 import "../styles/Cards.css";
 
 const PEXELS_API_KEY = "8Q6JEcA0dmkqOutlr97KXsOHTovvjXqMvE88G033HYdxlJBPzt8ttEsW";
-const SEARCH_QUERY = "modern city bus exterior";
+const SEARCH_QUERY = "modern urban city bus exterior";
 
 const linhas = Object.entries(horariosData.linhas).map(([id, data]) => ({
   id,
@@ -23,6 +24,8 @@ const shuffleArray = (array) => {
 
 const Cards = () => {
   const [backgrounds, setBackgrounds] = useState({});
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filteredLinhas, setFilteredLinhas] = useState(linhas);
 
   useEffect(() => {
     const fetchImages = async () => {
@@ -41,7 +44,6 @@ const Cards = () => {
         const imgs = {};
 
         linhas.forEach((linha, index) => {
-          // Garante que não exceda o número de imagens disponíveis
           const photo = shuffledPhotos[index % shuffledPhotos.length];
           imgs[linha.id] = photo?.src?.medium;
         });
@@ -55,35 +57,51 @@ const Cards = () => {
     fetchImages();
   }, []);
 
+  useEffect(() => {
+    const results = linhas.filter(linha =>
+      linha.id.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      linha.nome.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setFilteredLinhas(results);
+  }, [searchTerm]);
+
   return (
-    <div className="cards-container">
-      {linhas.map((linha) => (
-        <div key={linha.id} className="card">
-          <div className="card-header">
-            <div className="linha-id">{linha.id}</div>
-            <div className="linha-nome">{linha.nome}</div>
-          </div>
+    <div className="cards-page">
+      <SearchBar
+        value={searchTerm}
+        onChange={setSearchTerm}
+        placeholder="Pesquisar linhas..."
+      />
+      
+      <div className="cards-container">
+        {filteredLinhas.map((linha) => (
+          <div key={linha.id} className="card">
+            <div className="card-header">
+              <div className="linha-id">{linha.id}</div>
+              <div className="linha-nome">{linha.nome}</div>
+            </div>
 
-          <div
-            className="card-body"
-            style={{
-              backgroundImage: `url(${backgrounds[linha.id]})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-              minHeight: "100px"
-            }}
-          />
+            <div
+              className="card-body"
+              style={{
+                backgroundImage: `url(${backgrounds[linha.id]})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                minHeight: "100px"
+              }}
+            />
 
-          <div className="card-footer">
-            <button className="btn-icon" title="Editar">
-              <Pencil size={19} />
-            </button>
-            <button className="btn-icon" title="Excluir">
-              <Trash2 size={19} />
-            </button>
+            <div className="card-footer">
+              <button className="btn-icon" title="Editar">
+                <Pencil size={19} />
+              </button>
+              <button className="btn-icon" title="Excluir">
+                <Trash2 size={19} />
+              </button>
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 };

@@ -37,7 +37,7 @@ const Sidebar = ({ collapsed, toggleSidebar }) => {
 
   const menuItems = [
     { to: "/admin/home", icon: FaHome, label: "Início" },
-    { to: "/users", icon: FaClock, label: "Horários" },
+    { to: "/admin/horarios", icon: FaClock, label: "Horários" },
     { to: "/reports", icon: FaBus, label: "Itinerários" },
     { to: "/reports", icon: FaIdCard, label: "Cartões" },
     { to: "/reports", icon: FaHeadset, label: "Reclamações" },
