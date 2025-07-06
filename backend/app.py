@@ -4,6 +4,7 @@ from routes.auth.auth import auth_bp
 from routes.data.editor import editor_bp  # <-- novo import
 
 from routes.data.horarios import horarios_bp
+from routes.data.itinerarios import itinerarios_bp
 
 app = Flask(__name__)
 CORS(app)
@@ -12,6 +13,7 @@ CORS(app)
 app.register_blueprint(auth_bp)
 app.register_blueprint(editor_bp)  # <-- novo blueprint
 app.register_blueprint(horarios_bp)
+app.register_blueprint(itinerarios_bp)
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -3,9 +3,6 @@ import { useParams, useSearchParams, useNavigate } from "react-router-dom";
 import { FaHome, FaFilePdf, FaClock, FaArrowDown, FaArrowUp, FaSearch } from 'react-icons/fa';
 import "./ItinerarioDetalhes.css";
 import "../horarios/LinhaDetalhes.css";
-import itinerarios from "../../data/itinerarios.json";
-import horariosData from "../../data/horarios.json";
-
 
 const Itinerarios = () => {
   const { linhaId } = useParams();
@@ -17,25 +14,41 @@ const Itinerarios = () => {
   const [animationClass, setAnimationClass] = useState('fade-in');
   const [loading, setLoading] = useState(true);
   const [clickedButton, setClickedButton] = useState(null);
+  const [itinerariosData, setItinerariosData] = useState(null);
+  const [horariosData, setHorariosData] = useState(null);
 
   const direcao = searchParams.get("direcao") || "BAIRRO";
 
+  //busca a tabela de itinerários presente no JSON por meio de API
   useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 600);
+    setLoading(true);
+    fetch("http://localhost:5000/api/itinerarios")
+      .then(res => res.json())
+      .then(data => {
+        setItinerariosData(data);
+        setTimeout(() => setLoading(false), 600);
+      })
+      .catch(err => {
+        console.error("Erro ao carregar itinerários:", err);
+        setLoading(false);
+      });
   }, [linhaId]);
 
-  const linha = itinerarios.linhas[linhaId];
-  const linhaHorario = horariosData.linhas[linhaId];
+  //busca a tabela de itinerários presente no JSON por meio de API
+  useEffect(() => {
+    fetch("http://localhost:5000/api/horarios")
+      .then(res => res.json())
+      .then(data => setHorariosData(data))
+      .catch(err => console.error("Erro ao carregar horários:", err));
+  }, []);
 
-  // Obter todas as linhas para a busca
-  const todasLinhas = Object.entries(horariosData.linhas).map(([id, data]) => ({
-    id,
-    nome: data.nome
-  }));
+  const linha = itinerariosData?.linhas?.[linhaId];
+  const linhaHorario = horariosData?.linhas?.[linhaId];
 
-  // Filtrar linhas baseado no termo de busca
+  const todasLinhas = horariosData
+    ? Object.entries(horariosData.linhas).map(([id, data]) => ({ id, nome: data.nome }))
+  : [];
+
   const linhasFiltradas = todasLinhas.filter(linha => {
     const busca = termoBusca.toLowerCase();
     return (
@@ -61,7 +74,6 @@ const Itinerarios = () => {
   const handleButtonClick = (buttonType) => {
     setClickedButton(buttonType);
     setTermoBusca('');
-    
     setTimeout(() => {
       setClickedButton(null);
     }, 300);
@@ -69,10 +81,7 @@ const Itinerarios = () => {
 
   const scrollTo = (id) => {
     const element = document.getElementById(id);
-    element.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start'
-    });
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   const toggleNavegacao = () => {
@@ -92,12 +101,12 @@ const Itinerarios = () => {
     }, 100);
   };
 
-  if (loading) {
-    return (
-      <div className="loading-container">
-        <div className="loading-spinner"></div>
-        <p>Carregando...</p>
-      </div>
+  if (loading || !horariosData) {
+  return (
+    <div className="loading-container">
+      <div className="loading-spinner"></div>
+      <p>Carregando...</p>
+    </div>
     );
   }
 
@@ -106,35 +115,32 @@ const Itinerarios = () => {
   }
 
   const paradas = linha.partindo_de[direcao] || {};
-  const paradasArray = Object.entries(paradas)
-    .sort(([keyA], [keyB]) => {
-      if (keyA === "ponto_inicial") return -1;
-      if (keyB === "ponto_inicial") return 1;
-      if (keyA === "ponto_final") return 1;
-      if (keyB === "ponto_final") return -1;
-      const numA = parseInt(keyA.replace('p', ''));
-      const numB = parseInt(keyB.replace('p', ''));
-      return numA - numB;
-    });
+  const paradasArray = Object.entries(paradas).sort(([keyA], [keyB]) => {
+    if (keyA === "ponto_inicial") return -1;
+    if (keyB === "ponto_inicial") return 1;
+    if (keyA === "ponto_final") return 1;
+    if (keyB === "ponto_final") return -1;
+    const numA = parseInt(keyA.replace('p', ''));
+    const numB = parseInt(keyB.replace('p', ''));
+    return numA - numB;
+  });
 
   return (
-    
     <div className={`itinerario-container ${animationClass}`}>
       <section id="itinerario" className="horarios">
         <h2>Itinerários das Linhas</h2>
 
-         <div className="search-container">
-                <FaSearch className='lupa'/>
-                <input
-                  type="text"
-                  id="search"
-                  className="search-bar"
-                  placeholder="Pesquisar por número ou nome..."
-                  value={termoBusca}
-                  onChange={handleBuscaChange}
-                />
-          </div>
-        
+        <div className="search-container">
+          <FaSearch className='lupa'/>
+          <input
+            type="text"
+            id="search"
+            className="search-bar"
+            placeholder="Pesquisar por número ou nome..."
+            value={termoBusca}
+            onChange={handleBuscaChange}
+          />
+        </div>
 
         {termoBusca && (
           <div className="linha-container">
@@ -196,7 +202,7 @@ const Itinerarios = () => {
         <div className="direcao-container">
           {Object.keys(linha.partindo_de).map((direcaoKey) => {
             let label = "";
-      
+
             if (linhaId === "3103" || linhaId === "3128") {
               if (direcaoKey === "BAIRRO") {
                 label = "Bairro → Shopping";

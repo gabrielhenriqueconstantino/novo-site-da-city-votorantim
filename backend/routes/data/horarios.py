@@ -14,3 +14,4 @@ def obter_horarios():
         return jsonify(dados), 200
     except Exception as e:
         return jsonify({'erro': str(e)}), 500
+      
